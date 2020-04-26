@@ -32,17 +32,16 @@ export default class BookApp extends React.Component {
 
     onDelete = (bookId) => {
         BookService.removeBook(bookId)
-        this.setState({ BookIdToEdit: null })
         this.loadCars()
     }
 
     render() {
-        const  {books, selectedBook } = this.state
+        const  {books } = this.state
         return (
             <div className="container">
                 <BookFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
                 {books &&<BookList books={ books } />}
-                <BookDetails onDelete={ this.onDelete }></BookDetails>
+                <BookDetails onDelete={()=> this.onDelete }></BookDetails>
             </div>
         )
     }

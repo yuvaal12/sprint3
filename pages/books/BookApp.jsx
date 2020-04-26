@@ -40,7 +40,7 @@ export default class BookApp extends React.Component {
 
     toggleAdd() {
         var add = this.state.isAdd
-        if (add) {
+        if (!add) {
             this.setState({
                 isAdd: true
             })
@@ -54,9 +54,7 @@ export default class BookApp extends React.Component {
         return (
             <div className="container">
                 <BookFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
-                <div className="nav-bar">
-                    <span onClick={this.toggleAdd}>Add Book</span>
-                </div>
+                <span className="add-book-btn" onClick={() =>{this.toggleAdd()}}>Add Book</span>
                 {isAdd && <BookAdd />}
                 {books && <BookList books={books} />}
             </div>
