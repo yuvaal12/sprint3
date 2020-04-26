@@ -14,16 +14,14 @@ a {
     color: unset;
 }
 
-.linkTo img{
+.linkTo img {
     width: 220px;
     height: 320px;
 }
 
-
 .hidden {
-    visibility: hidden;
+    display: none;
 }
-
 
 .review-list {
     max-height: 200px;
@@ -376,6 +374,7 @@ a {
 .more-btn:hover {
     background-color: rgb(158, 158, 158);
 }
+
 .user-msg {
     background-color: #ffffff;
     position: absolute;
