@@ -3,7 +3,11 @@ export default class Home extends React.Component {
     render() {
         return (
             <section>
-                <h2>Home Sweet Home</h2>
+                <main className="home-Page">
+                  <h1>Welcome to</h1>
+                  <h2>Gal {'&'} Yuval</h2>
+                  <h3>Sprint 3</h3>
+                </main>
             </section>
         )
     }
