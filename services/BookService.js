@@ -456,7 +456,8 @@ export default {
   getBookById,
   addReview,
   reviewQuery,
-  removeReview
+  removeReview,
+  getGoogleBooks
 }
 
 function addReview(review, bookId) {
@@ -549,4 +550,9 @@ function _createBook(newBook) {
 }
 function _getIdxById(BookId) {
   return gBooks.findIndex(book => book.id === BookId)
+}
+
+function getGoogleBooks(searchBy) {
+  return axios.get(`https://www.googleapis.com/books/v1/volumes?printType=books&q=${searchBy}`)
+      .then(res => res.data.items)
 }

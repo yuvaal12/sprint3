@@ -68,6 +68,8 @@ export default class BookDetails extends React.Component {
 
     render() {
         const { book } = this.state
+        console.log(this.props);
+        
         const Loading = <p>Loading...</p>
 
         return ((!book) ? Loading : <section>
@@ -85,7 +87,7 @@ export default class BookDetails extends React.Component {
                     <span>language:  {book.language}</span>
                     <span>Categories:  {book.categories}</span>
                     <LongTxt text={book.description} />
-                    <button onClick={() => this.props.onDelete(book.id)}>Delete</button>
+                    <button onClick={() => {this.props.onDelete(book.id)}}>Delete</button>
                 </div>
                 <div className={this.state.classReview}>
                     <BookReview bookId={book.id} />

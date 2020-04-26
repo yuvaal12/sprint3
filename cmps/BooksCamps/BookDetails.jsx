@@ -54,7 +54,7 @@ export default class BookDetails extends React.Component {
                     <h1 className="book-title">{book.title}</h1>
                     <span className="sub-title">{book.subtitle}</span>
                     <span>ID: {book.id}</span>
-        <span>Price: <span className={this.state.class}>{book.listPrice.amount}{this.getCurr()}</span>  <span className="sell">{this.isSale()}</span></span>
+                    <span>Price: <span className={this.state.class}>{book.listPrice.amount}{this.getCurr()}</span>  <span className="sell">{this.isSale()}</span></span>
                     <img src={`${book.thumbnail}`} alt={`error with - ${book.title} - img`} />
                     <span>Authors:  {book.authors}</span>
                     <span>Published At:  {book.publishedDate} <span> - {this.getTime()}</span></span>
