@@ -14,8 +14,14 @@ export class App extends React.Component {
         return (
             <Router>
                 <div>
-                    <h2 className="title-page">Miss <span>BooK</span></h2>
-                    <NavBar history={history}></NavBar>
+                    <header>
+                         <div className="navBar">
+                         <h2 className="title-page">App<span>sus</span>
+                          <img className="logo-img" src="assets/img/logo.png" alt=""></img>
+                          </h2>
+                          <NavBar history={history}></NavBar>
+                          </div>
+                    </header>    
                     <main className="main container">
                         <Switch>
                             <Route component={AboutUs} path="/about" />
