@@ -1,9 +1,9 @@
 const { NavLink, Switch, Route } = ReactRouterDOM
 
-import BookService from '../services/BookService.js'
-import BookList from '../cmps/BookList.jsx'
-import BookFilter from '../cmps/BookFilter.jsx'
-import BookAdd from '../cmps/BookAdd.jsx'
+import BookService from '../../services/BookService.js'
+import BookList from '../../cmps/BooksCamps/BookList.jsx'
+import BookFilter from '../../cmps/BooksCamps/BookFilter.jsx'
+import BookAdd from '../../cmps/BooksCamps/BookAdd.jsx'
 
 export default class BookApp extends React.Component {
     state = {

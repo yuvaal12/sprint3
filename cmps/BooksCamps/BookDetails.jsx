@@ -1,4 +1,4 @@
-import LongTxt from '../cmps/LongTxt.jsx'
+import LongTxt from '../../cmps/LongTxt.jsx'
 export default class BookDetails extends React.Component {
     state = {
         class: ''
@@ -44,7 +44,9 @@ export default class BookDetails extends React.Component {
     }
 
     render() {
-        const { book, onBack } = this.props
+        const { book, onBack, onDelete } = this.props
+        console.log('del:',onDelete);
+        
         return (
             <section>
                 <button onClick={onBack}>Back</button>

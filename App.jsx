@@ -3,8 +3,8 @@ const { Route, Switch, NavLink  } = ReactRouterDOM
 const history = History.createBrowserHistory()
 
 import {NavBar} from './cmps/NavBar.jsx';
-import BookApp from './pages/BookApp.jsx'
-import BookDetails from './pages/BookDetails.jsx'
+import BookApp from './pages/books/BookApp.jsx'
+import BookDetails from './pages/books/BookDetails.jsx'
 import AboutUs from './pages/AboutUs.jsx';
 import Home from './pages/Home.jsx';
 

@@ -1,7 +1,7 @@
-import BookService from '../services/BookService.js'
-import BookList from './BookList.jsx'
+import BookService from '../../services/BookService.js'
+import BookList from '../BookList.jsx'
 import BookDetails from './BookDetails.jsx'
-import BookFilter from '../cmps/BookFilter.jsx'
+import BookFilter from './BookFilter.jsx'
 
 export default class BookApp extends React.Component {
     state = {

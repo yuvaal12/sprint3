@@ -1,4 +1,4 @@
-import BookService from '../services/BookService.js'
+import BookService from '../../services/BookService.js'
 import BookReviewList from "./BookReviewList.jsx"
 
 export default class BookReview extends React.Component {

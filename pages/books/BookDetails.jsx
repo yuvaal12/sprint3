@@ -1,7 +1,7 @@
 
-import BookService from "../services/BookService.js"
-import LongTxt from '../cmps/LongTxt.jsx'
-import BookReview from "../cmps/BookReview.jsx"
+import BookService from '../../services/BookService.js'
+import LongTxt from '../../cmps/BooksCamps/LongTxt.jsx'
+import BookReview from '../../cmps/BooksCamps/BookReview.jsx'
 
 export default class BookDetails extends React.Component {
     state = {
