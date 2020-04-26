@@ -4,9 +4,24 @@ import KeepText from './KeepText.jsx';
 import keepService from '../../services/keepService.js'
 
 export default class AddByType extends React.Component {
+    state={
+        note: null
+    }
 
-    onSumbit(){
-        
+    handleInput = ({ target }) => {
+        const field = target.name
+        const value = target.value
+        this.setState(prevState => {
+            return {
+                note: {
+                    ...prevState.note,
+                    [field]: value
+                }
+            }
+        })
+    }
+    saveKeep(ev){
+
     }
     getForm() {
         const typ = this.props.typeChoose
@@ -22,10 +37,10 @@ export default class AddByType extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <form>
+                <form onSumbit={this.saveKeep}>
                     {this.getForm()}
                 </form>
-                <button onClick={this.onSumbit}>Add note</button>
+                <button>Add note</button>
             </React.Fragment>
         )
     }

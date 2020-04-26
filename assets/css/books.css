@@ -277,13 +277,14 @@
 }
 
 .user-msg {
-    background-color: #ffffff;
+    background-color: #3d3d3d;
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 1.2em;
     padding: 10px 20px;
-    border: 3px solid #2ed573;
+    color: violet;
+    border: 3px solid #6e2ed5;
     border-radius: 10px;
 }
 

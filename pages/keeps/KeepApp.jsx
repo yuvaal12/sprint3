@@ -1,6 +1,8 @@
+import { eventBus } from '../../services/eventBusService.js'
 import keepService from '../../services/keepService.js'
 import KeepList from '../../cmps/KeepsCmps/KeepList.jsx'
 import KeepAdd from '../../cmps/KeepsCmps/KeepAdd.jsx'
+import UserMsg from '../../cmps/UserMsg.jsx'
 import KeepFilter from '../../cmps/KeepsCmps/KeepFilter.jsx'
 
 export default class KeepApp extends React.Component {
@@ -30,6 +32,7 @@ export default class KeepApp extends React.Component {
     }
 
     onDelete = (keepId) => {
+        eventBus.emit('del-msg', { txt: ' Deleted Successfully!'})
         keepService.removeKeep(keepId)
         this.loadKeeps()
     }

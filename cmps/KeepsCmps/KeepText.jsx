@@ -5,7 +5,6 @@ export default class KeepText extends React.Component {
     }
     toggleCover = ({ target }) => {
         const val = target.value
-        console.log(val);
         if (val === 'with') {
             this.setState({ isCover: true })
         } else this.setState({ isCover: false })

@@ -90,7 +90,15 @@ function _createKeeps() {
                 url: './assets/audio/Yay.mp3'
             },
             isPinned: false,
-        }
+        },
+        {
+            type: 'coverOnly',
+            cover: {
+                type:'video',
+                url: './assets/video/sielnce.mp4'
+            },
+            isPinned: true,
+        },
     ]
     gKeeps =[];
     notes.forEach(note => {
