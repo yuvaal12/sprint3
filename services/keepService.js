@@ -9,9 +9,13 @@ export default {
     query,
     getKeepById,
     removeKeep,
-    addKeep
+    addKeep,
+    getTypes
 }
 
+function getTypes(){
+    return keepsTypes;
+}
 
 function getKeepById(keepId) {
     const keep = gKeeps.find(keep => keep.id === keepId);
@@ -57,7 +61,7 @@ function _createKeeps() {
             isCover: true,
             cover: {
                 type: 'img',
-                url: './img/logo.png'
+                url: './assets/img/logo.png'
             },
             isPinned: false,
             info: {
@@ -82,8 +86,8 @@ function _createKeeps() {
         {
             type: 'imgOnly',
             cover: {
-                type:'video',
-                url: './img/test.mp3'
+                type:'audio',
+                url: './assets/audio/Yay.mp3'
             },
             isPinned: false,
         }
@@ -103,7 +107,7 @@ function _createKeep(note) {
         var isCoverKeep = note.isCover;
         var keppInfo = note.info;
     }
-
+    if(note.cover === undefined) note.cover = null
 
     return {
         id: utilService.makeId(),

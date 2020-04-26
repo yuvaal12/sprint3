@@ -1,5 +1,6 @@
 import keepService from '../../services/keepService.js'
 import KeepList from '../../cmps/KeepsCmps/KeepList.jsx'
+import KeepAdd from '../../cmps/KeepsCmps/KeepAdd.jsx'
 import KeepFilter from '../../cmps/KeepsCmps/KeepFilter.jsx'
 
 export default class KeepApp extends React.Component {
@@ -33,11 +34,11 @@ export default class KeepApp extends React.Component {
         this.loadKeeps()
     }
     render() {
-        console.log(keepService.query());
         const { keeps } = this.state
         return (
             <section className="container">
                 {/* <KeepFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} /> */}
+                <KeepAdd />
                 {keeps && <KeepList keeps={keeps} />}
             </section>
         )

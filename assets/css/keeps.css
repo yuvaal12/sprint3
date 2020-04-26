@@ -1,0 +1,10 @@
+.keep-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.keep-card{
+    background-color: rgb(34, 34, 34);
+    margin-top: 1%;
+    height: auto;
+}
