@@ -13,7 +13,10 @@ a {
     text-decoration: none;
     color: unset;
 }
-
+.linkTo img{
+    width: 220px;
+    height: 320px;
+}
 .review-list {
     max-height: 200px;
     width: 100%;
@@ -355,4 +358,19 @@ a {
 
 .more-btn:hover {
     background-color: rgb(158, 158, 158);
+}
+.user-msg {
+    background-color: #ffffff;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: 3px solid #2ed573;
+    border-radius: 10px;
+}
+
+.user-msg button {
+    margin-left: 10px;
+    float: right;
 }

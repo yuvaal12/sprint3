@@ -36,7 +36,7 @@ export default class BookApp extends React.Component {
     onDelete = (bookId) => {
         BookService.removeBook(bookId)
         this.onClearSelected()
-        this.loadCars()
+        this.loadBooks()
     }
 
     toggleAdd() {

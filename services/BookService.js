@@ -445,7 +445,9 @@ const gDefualtBook =
       }
     }
   ];
-var gBooks = gDefualtBook;
+var gBooks = storageService.load(KEY);
+console.log(gBooks);
+
 
 
 
@@ -475,7 +477,6 @@ function reviewQuery(bookId) {
   return getBookById(bookId)
     .then((book) => {
       var reviews = (book.review) ? book.review : []
-      console.log(reviews);
       return reviews;
     })
 }
@@ -496,6 +497,7 @@ function _getIdxById(reviewId, bookId) {
   return reviews.findIndex(review => review.id === reviewId)
 }
 function query(filterBy = null) {
+  if (!gBooks) gBooks = gDefualtBook;
   var books = gBooks;
   if (!filterBy) return Promise.resolve(gBooks)
   else {
@@ -533,14 +535,23 @@ function removeBook(bookId) {
   storageService.store(KEY, gBooks);
   return Promise.resolve();
 }
-function addGoogleBook(book){
-  console.log('add');
-  
+function addGoogleBook(book) {
   var newbook = _createBook(book)
   gBooks.push(newbook);
   storageService.store(KEY, gBooks);
+  return newbook;
 }
 function _createBook(newBook) {
+  var pricing = newBook.saleInfo.listPrice;
+  if (!pricing) {
+    pricing = {
+      amount: 55,
+      currencyCode: 'ILS',
+      isOnSale: true
+    }
+    var desc = newBook.volumeInfo.description
+    if(!desc) desc= 'no info yet'
+  }
   return {
     id: utilService.makeId(),
     title: newBook.volumeInfo.title,
@@ -552,7 +563,7 @@ function _createBook(newBook) {
     categories: newBook.volumeInfo.categories,
     thumbnail: newBook.volumeInfo.imageLinks.thumbnail,
     language: newBook.volumeInfo.language,
-    listPrice: newBook.saleInfo.listPrice
+    listPrice: pricing
   };
 }
 function _getIdxById(BookId) {

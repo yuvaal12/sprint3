@@ -7,6 +7,7 @@ import BookApp from './pages/books/BookApp.jsx'
 import BookDetails from './pages/books/BookDetails.jsx'
 import AboutUs from './pages/AboutUs.jsx';
 import Home from './pages/Home.jsx';
+import UserMsg from './cmps/UserMsg.jsx';
 
 export class App extends React.Component {
 
@@ -30,6 +31,7 @@ export class App extends React.Component {
                             <Route component={Home} path="/" />
                         </Switch>
                     </main>
+                    <UserMsg/>
                 </div>
             </Router>
         )

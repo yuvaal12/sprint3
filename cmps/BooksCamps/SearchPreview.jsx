@@ -1,4 +1,6 @@
 import BookService from '../../services/BookService.js'
+import { eventBus } from '../../services/eventBusService.js'
+
 export default function SearchPreview(props) {
     var text = '...';
     var toShow = false;
@@ -14,14 +16,15 @@ export default function SearchPreview(props) {
         toShow = (toShow)? false : true;
     }
     function addBook(){
-        BookService.addGoogleBook(props.book)
+        var newbook = BookService.addGoogleBook(props.book)
+        eventBus.emit('show-msg', { txt: props.book.volumeInfo.title + ' Added Successfully!', id: newbook.id, path: '/book/'})
     }
     return (
         <div className="single-search">
-            <div onClick={toggleShow()}>
+            <div onClick={toggleShow}>
                 {title}<span className="more-title">{text}</span>
             </div>
-            <button className="add-from-list" onClick={addBook()}>Add</button>
+            <button className="add-from-list" onClick={addBook}>Add</button>
         </div>
     )
 }
