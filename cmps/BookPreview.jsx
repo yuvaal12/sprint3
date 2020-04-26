@@ -16,7 +16,8 @@ export default function BookPreview(props) {
         }
     }
     return (
-        <Link className="linkTo" to={`/book/${book.id}`}><article className="book-preview">
+        <Link className="linkTo" to={`/book/${book.id}`}>
+            <article className="book-preview">
             <h1 className="book-title">{book.title}</h1>
             <img src={`${book.thumbnail}`} alt={`error with - ${book.title} - img`} />
             <div className="pricing">
@@ -24,6 +25,7 @@ export default function BookPreview(props) {
                 <span>{priceList.amount}</span>
                 <span>{getCurr(priceList.currencyCode)}</span>
             </div>
-        </article></Link>
+        </article>
+        </Link>
     )
 }

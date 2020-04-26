@@ -9,8 +9,6 @@ export function NavBar(props) {
             <li><NavLink to='/book'>Our Books</NavLink></li>
         </ul>
         <button onClick={() => {
-            console.log('PROPS', props);
-            
             props.history.goBack();
         }}>Back</button>
     </nav>
