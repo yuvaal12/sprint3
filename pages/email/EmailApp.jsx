@@ -13,10 +13,10 @@ export default class EmailApp extends React.Component {
     }
 
     loadEmails() {
-        var emails = emailService.query()
-        this.setState({ emails })
-        console.log(emails);
-
+        emailService.query(this.state.filterBy)
+        .then(emails => {
+            this.setState({ emails })
+        })
     }
 
 
@@ -31,13 +31,15 @@ export default class EmailApp extends React.Component {
         return (
             <section>
                 <main className="emails-page">
-                    <h1>Emails</h1>
                     <div className="emails-container">
                         <div className="side-bar">
                             <h2>Side Bar</h2>
+                            <a href="">Inbox</a>
+                            <a href="">starred</a>
+                            <a href="">sent Mail</a>
+                            <a href="">Drafts</a>
                         </div>
                         <div className="email-main">
-                            <h2>main</h2>
                             {/* <EmailFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} /> */}
                             {emails && <EmailList emails={emails} />}
                         </div>

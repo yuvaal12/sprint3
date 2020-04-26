@@ -1,4 +1,105 @@
 .emails-page {
-    background-color: rgb(255, 255, 255);
     padding: 20px;
+}
+
+.Emails-list {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+}
+
+.side-bar {
+    display: flex;
+    flex-basis: 15%;
+    flex-direction: column;
+    background-color: rgba(24, 24, 24, 0.212);
+}
+
+.side-bar a {
+    margin: 10px auto;
+    font-family: nanumgothic;
+}
+
+.email-main {
+    display: flex;
+    flex-basis: 85%;
+}
+
+.emails-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ccc;
+}
+
+.email-preview {
+    display: flex;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(0, 0, 0);
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.24);
+    border-bottom: 1px solid rgba(82, 82, 82, 0.116);
+    background-color: white;
+}
+
+.email-preview h4,
+h5,
+h6 {
+    font-family: nanumgothic;
+}
+
+.email-search {
+    width: 300px;
+    font-family: nanumgothic;
+    text-align: center;
+    font-size: 1.2em;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    height: 30px;
+    border-radius: 25px;
+    margin-top: 2%;
+}
+
+.email-search::placeholder {
+    color: rgb(0, 0, 0);
+}
+
+.mail-list {
+    flex-direction: column;
+    align-items: center;
+}
+
+.email-from {
+    margin: auto;
+    padding: 10px;
+    width: 100px;
+    text-align: left;
+}
+
+.email-subject {
+    margin: auto;
+    padding: 10px;
+    width: 200px;
+    text-align: left;
+}
+
+.email-body {
+    width: 300px;
+    margin: auto;
+    padding: 10px;
+    text-align: left;
+}
+
+.email-sentAt {
+    width: 200px;
+    margin: auto;
+    padding: 10px;
+    text-align: right;
+}
+
+.bold {
+    font-weight: bold;
 }

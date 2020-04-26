@@ -32,6 +32,20 @@ ul {
     list-style: none;
 }
 
+input {
+    border: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
 .hidden {
     display: none;
 }
@@ -42,6 +56,10 @@ ul {
     justify-content: space-between;
     width: 90%;
     margin: auto;
+}
+
+.navBar a {
+    font-size: 1.5em;
 }
 
 .open-menu {

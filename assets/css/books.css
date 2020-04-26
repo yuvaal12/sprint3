@@ -71,11 +71,6 @@
     border-radius: 20px;
 }
 
-.container {
-    text-align: center;
-    max-width: 1060px;
-}
-
 .book-list {
     width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
