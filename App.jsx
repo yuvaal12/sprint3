@@ -26,14 +26,14 @@ export class App extends React.Component {
         return (
             <Router>
                 <div>
-                    <header>
+                    <nav>
                          <div className="navBar">
                          <h2 className="title-page">App<span>sus</span>
                           <img className="logo-img" src="assets/img/logo.png" alt=""></img>
                           </h2>
                           <a className="open-menu" onClick={this.toggleMenu}>❐</a>
                           </div>
-                    </header>    
+                    </nav>    
                           <NavBar history={history} linksClass={this.state.classNavBar}></NavBar>
                     <main className="main container">
                         <Switch>

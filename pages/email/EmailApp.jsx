@@ -30,7 +30,7 @@ export default class EmailApp extends React.Component {
 
         return (
             <section>
-                <main className="home-Page">
+                <main className="emails-page">
                     <h1>Emails</h1>
                     <div className="emails-container">
                         <div className="side-bar">

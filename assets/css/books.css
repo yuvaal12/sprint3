@@ -1,111 +1,12 @@
-body {
-    background-color: rgba(20, 20, 20, 0.075);
-    color: rgb(0, 0, 0);
-    background-color: rgb(204, 204, 204);
-    margin: 0;
-}
-
-header {
-    background-color: rgba(0, 0, 0, 0.89);
-}
-
-a {
-    text-decoration: none;
-    color: unset;
-}
-
 .linkTo img {
     width: 220px;
     height: 320px;
-}
-
-.hidden {
-    display: none;
 }
 
 .review-list {
     max-height: 200px;
     width: 100%;
     overflow: auto;
-}
-
-.title-page {
-    display: flex;
-    align-items: center;
-    margin: auto;
-    /* align-self: center; */
-    margin: 0;
-    padding: 1%;
-    font-size: 2.5em;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    pointer-events: none;
-    user-select: none;
-}
-
-.open-menu {
-    text-align: center;
-    color: rgb(126, 71, 255);
-    font-size: 3em;
-}
-
-.logo-img {
-    display: flex;
-    align-items: center;
-    width: 40px;
-}
-
-.nav-container {
-    background-color: rgba(123, 121, 253, 0.849);
-    width: 200px;
-    list-style: none;
-    font-size: 1.2em;
-    display: flex;
-    justify-content: space-between;
-}
-
-.navBar {
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin: auto;
-}
-
-.nav-container li {
-    font-size: 1em;
-    border: 1px solid white;
-    /* padding: 10px; */
-    cursor: pointer;
-}
-
-.nav-container li:hover {
-    background-color: white;
-    color: black;
-}
-
-.nav-container button {
-    background-color: rgba(255, 255, 255, 0.651);
-    color: rgb(0, 0, 0);
-    margin-left: 20px;
-    cursor: pointer;
-    font-size: 1em;
-    width: 50%;
-    border-radius: 50%;
-}
-
-.nav-container button:hover {
-    background-color: rgba(0, 0, 0, 0.651);
-    color: rgba(255, 255, 255, 0.651);
-}
-
-.nav-container li:first-child {
-    border-left: none;
-}
-
-.title-page span {
-    color: rgba(152, 151, 255, 0.849);
 }
 
 .main {

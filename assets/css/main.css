@@ -1,0 +1,125 @@
+@font-face {
+    font-family: nanumgothic;
+    src: url('/fonts/NanumGothic/NanumGothic-Regular.ttf');
+}
+
+@font-face {
+    font-family: orbitron;
+    src: url('/fonts/Orbitron/Orbitron-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Bilbo;
+    src: url('/fonts/Bilbo/Bilbo-Regular.ttf');
+}
+
+body {
+    margin: 0;
+}
+
+nav {
+    font-family: Bilbo;
+    font-size: 1.1em;
+    background-color: rgba(0, 0, 0, 0.849);
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+ul {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.navBar {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+}
+
+.open-menu {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 3em;
+    cursor: pointer;
+}
+
+.open-menu:hover {
+    color: rgb(154, 131, 255);
+}
+
+.title-page {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin: 0;
+    padding: 1%;
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    user-select: none;
+    background-color: rgba(153, 151, 255, 0.185);
+    cursor: pointer;
+}
+
+.title-page span {
+    color: rgba(152, 151, 255, 0.849);
+}
+
+.logo-img {
+    display: flex;
+    width: 35px;
+}
+
+.nav-container {
+    background-color: rgba(59, 59, 88, 0.418);
+    color: rgb(255, 255, 255);
+    margin-top: 0px;
+    padding: 15px;
+    font-size: 2em;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav-container button:hover {
+    background-color: rgba(0, 0, 0, 0.651);
+    color: rgba(255, 255, 255, 0.651);
+}
+
+.nav-container button {
+    background-color: rgba(255, 255, 255, 0.651);
+    color: rgb(0, 0, 0);
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 50%;
+    border-radius: 50%;
+}
+
+.nav-container li {
+    /* border-left: 1px solid white; */
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.nav-container li:not(:first-child) {
+    border-left: 1px solid white;
+}
+
+.nav-container li:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
