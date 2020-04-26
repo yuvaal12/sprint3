@@ -13,10 +13,18 @@ a {
     text-decoration: none;
     color: unset;
 }
+
 .linkTo img{
     width: 220px;
     height: 320px;
 }
+
+
+.hidden {
+    display: none;
+}
+
+
 .review-list {
     max-height: 200px;
     width: 100%;
@@ -38,6 +46,12 @@ a {
     user-select: none;
 }
 
+.open-menu {
+    text-align: center;
+    color: rgb(126, 71, 255);
+    font-size: 3em;
+}
+
 .logo-img {
     display: flex;
     align-items: center;
@@ -45,11 +59,12 @@ a {
 }
 
 .nav-container {
+    background-color: rgba(123, 121, 253, 0.849);
+    width: 200px;
     list-style: none;
     font-size: 1.2em;
     display: flex;
     justify-content: space-between;
-    margin-left: 300px;
 }
 
 .navBar {
@@ -62,10 +77,9 @@ a {
 
 .nav-container li {
     font-size: 1em;
-    border-left: 1px solid white;
-    padding: 10px;
+    border: 1px solid white;
+    /* padding: 10px; */
     cursor: pointer;
-    /* border: 1px solid white; */
 }
 
 .nav-container li:hover {
@@ -133,7 +147,8 @@ a {
     border-radius: 10px;
     padding: .3%;
 }
-.searches{
+
+.searches {
     padding: 2%;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
@@ -144,13 +159,15 @@ a {
     border-radius: 20px;
     text-align: left;
 }
-.single-search{
+
+.single-search {
     cursor: pointer;
     display: flex;
     padding: .7%;
     justify-content: space-between;
 }
-.single-search:hover{
+
+.single-search:hover {
     background-color: rgba(176, 190, 255, 0.341);
     border-radius: 20px;
 }

@@ -1,4 +1,8 @@
 .home-Page {
-    background-color: rgb(172, 66, 47);
+    all: unset;
     font-size: 3em;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    width: 1200px;
+    margin: auto;
 }

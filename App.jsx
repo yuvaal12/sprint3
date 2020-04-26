@@ -11,6 +11,13 @@ import UserMsg from './cmps/UserMsg.jsx';
 
 export class App extends React.Component {
 
+    state = {
+        classNavBar : "hidden"
+    }
+    toggleMenu = () => {
+
+    }
+
     render() {
         return (
             <Router>
@@ -20,9 +27,10 @@ export class App extends React.Component {
                          <h2 className="title-page">App<span>sus</span>
                           <img className="logo-img" src="assets/img/logo.png" alt=""></img>
                           </h2>
-                          <NavBar history={history}></NavBar>
+                          <a className="open-menu" onclick={this.toggleMenu()} href="">❐</a>
                           </div>
                     </header>    
+                          <NavBar className={this.state.classNavBar} history={history}></NavBar>
                     <main className="main container">
                         <Switch>
                             <Route component={AboutUs} path="/about" />
