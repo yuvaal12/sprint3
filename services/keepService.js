@@ -1,7 +1,7 @@
 import utilService from './utilService.js'
 import storageService from './storageService.js'
 
-const keepsTypes = ['text', 'todos', 'imgOnly']
+const keepsTypes = ['text', 'todos', 'coverOnly']
 const KEY_KEEP = 'notes';
 var gKeeps = storageService.load(KEY_KEEP);
 
@@ -66,7 +66,7 @@ function _createKeeps() {
             isPinned: false,
             info: {
                 title: 'is it working?',
-                body: 'Fullstack?'
+                body: 'Fullstack?' 
             }
         },
         {
@@ -77,14 +77,14 @@ function _createKeeps() {
                 title: 'and now?',
                 body:
                     [
-                        { txt: "Do that", doneAt: null },
-                        { txt: "Do this", doneAt: 137111811 },
-                        { txt: "Do those", doneAt: 187535141 }
+                        { txt: "Do that", doneAt: null, id: utilService.makeId() },
+                        { txt: "Do this", doneAt: 137111811, id: utilService.makeId() },
+                        { txt: "Do those", doneAt: 187535141, id: utilService.makeId() }
                     ]
             }
         },
         {
-            type: 'imgOnly',
+            type: 'coverOnly',
             cover: {
                 type:'audio',
                 url: './assets/audio/Yay.mp3'
@@ -99,7 +99,7 @@ function _createKeeps() {
     storageService.store(KEY_KEEP, gKeeps);
 }
 function _createKeep(note) {
-    if(note.type === 'imgOnly') {
+    if(note.type === 'coverOnly') {
         var isCoverKeep = true
         var keppInfo = ''
     }

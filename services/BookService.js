@@ -463,7 +463,7 @@ function addReview(review, bookId) {
             review.id = utilService.makeId()
             if (book.review) book.review.push({...review })
             else book.review = [{...review }]
-            storageService.store(KEY, gBooks);
+            storageService.store(KEY_BOOK, gBooks);
         })
 }
 
@@ -480,7 +480,7 @@ function removeReview(reviewId, bookId) {
         .then((book) => {
             const reviewIdx = _getIdxById(reviewId)
             book.review.splice(reviewIdx, 1)
-            storageService.store(KEY, gBooks);
+            storageService.store(KEY_BOOK, gBooks);
             return Promise.resolve();
         })
 }
@@ -515,7 +515,7 @@ function saveBook(savedBook) {
         var book = _createBook(savedBook);
         gBooks.push(book);
     }
-    storageService.store(KEY, gBooks);
+    storageService.store(KEY_BOOK, gBooks);
     var res = (Math.random() > 0.9) ? Promise.resolve(savedCar) : Promise.reject('Had Issues')
     return res;
 }
@@ -528,14 +528,14 @@ function getBookById(bookId) {
 function removeBook(bookId) {
     const bookIdx = gBooks.findIndex(book => book.id === bookId);
     gBooks.splice(bookIdx, 1);
-    storageService.store(KEY, gBooks);
+    storageService.store(KEY_BOOK, gBooks);
     return Promise.resolve();
 }
 
 function addGoogleBook(book) {
   var newbook = _createBook(book)
   gBooks.push(newbook);
-  storageService.store(KEY, gBooks);
+  storageService.store(KEY_BOOK, gBooks);
   return newbook;
 }
 

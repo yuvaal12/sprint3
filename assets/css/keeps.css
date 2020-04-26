@@ -4,7 +4,26 @@
     justify-content: space-evenly;
 }
 .keep-card{
-    background-color: rgb(34, 34, 34);
+    background-color: rgb(53, 53, 53);
+    border-radius: 10px;
     margin-top: 1%;
     height: auto;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1% 1% 0 1%;
+    min-width: 250px;
+}
+.keep-card img{
+    max-width: 250px;
+    height: auto;
+}
+.keep-card h1{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-decoration: underline;
+}
+.keep-tools{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 1.5%;
 }
