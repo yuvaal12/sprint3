@@ -14,7 +14,8 @@ export class App extends React.Component {
         classNavBar : "hidden"
     }
     toggleMenu = () => {
-
+        console.log("ffffff");
+        
     }
 
     render() {
