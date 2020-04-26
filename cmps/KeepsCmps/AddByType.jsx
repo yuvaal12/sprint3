@@ -1,27 +1,31 @@
-import KeepCoverOnly from './KeepCoverOnly.jsx'
+import KeepCover from './KeepCover.jsx'
 import KeepTodos from './KeepTodos.jsx';
 import KeepText from './KeepText.jsx';
-export default class AddByType extends React.Component {
-    state = {
-        type: this.props.typeChoose
-    }
+import keepService from '../../services/keepService.js'
 
+export default class AddByType extends React.Component {
+
+    onSumbit(){
+        
+    }
     getForm() {
-        const typ = this.state.type
-        console.log('type:', typ);
-        if(typ === 'text'){
-            return (<KeepText.jsx />)
-        }else if (typ === 'coverOnly') {
-            return (<KeepCoverOnly />)
-        } else if (val === 'todos') {
-            return (<KeepTodos.jsx />)
+        const typ = this.props.typeChoose
+        console.log('type:', this.props.typeChoose);
+        if (typ === 'text') {
+            return (<KeepText />)
+        } else if (typ === 'coverOnly') {
+            return (<KeepCover />)
+        } else if (typ === 'todos') {
+            return (<KeepTodos />)
         }
     }
     render() {
         return (
             <React.Fragment>
-                {this.getForm()}
-                <button>Add note</button>
+                <form>
+                    {this.getForm()}
+                </form>
+                <button onClick={this.onSumbit}>Add note</button>
             </React.Fragment>
         )
     }

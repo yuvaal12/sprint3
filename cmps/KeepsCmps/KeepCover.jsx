@@ -1,5 +1,5 @@
 
-export default class KeepCoverOnly extends React.Component {
+export default class KeepCover extends React.Component {
     state = {
         input: null
     }
@@ -19,7 +19,6 @@ export default class KeepCoverOnly extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <form>
                     <div>
                         <input type="radio" name="coverT" id="img" value="img" />
                         <label htmlFor="img">Img</label>
@@ -35,7 +34,6 @@ export default class KeepCoverOnly extends React.Component {
                         <label htmlFor="file">File</label>
                     </div>
                     {this.state.input}
-                </form>
             </React.Fragment>
         )
     }

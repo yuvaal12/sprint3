@@ -108,7 +108,7 @@ function _createKeep(note) {
         var keppInfo = note.info;
     }
     if(note.cover === undefined) note.cover = null
-
+    if(note.isPinned === undefined) note.isPinned = false
     return {
         id: utilService.makeId(),
         type: note.type,
