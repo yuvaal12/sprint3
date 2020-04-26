@@ -457,31 +457,32 @@ export default {
   addReview,
   reviewQuery,
   removeReview,
+  addGoogleBook,
   getGoogleBooks
 }
 
 function addReview(review, bookId) {
   return getBookById(bookId)
-    .then((book)=>{
+    .then((book) => {
       review.id = utilService.makeId()
-      if(book.review) book.review.push({...review})
-      else book.review = [{...review}]
+      if (book.review) book.review.push({ ...review })
+      else book.review = [{ ...review }]
       storageService.store(KEY, gBooks);
     })
 }
 
 function reviewQuery(bookId) {
-  return getBookById(bookId) 
-    .then((book)=>{
-      var reviews = (book.review)? book.review : []
+  return getBookById(bookId)
+    .then((book) => {
+      var reviews = (book.review) ? book.review : []
       console.log(reviews);
       return reviews;
     })
 }
 
-function removeReview(reviewId,bookId) {
+function removeReview(reviewId, bookId) {
   return getBookById(bookId)
-    .then((book)=>{
+    .then((book) => {
       const reviewIdx = _getIdxById(reviewId)
       book.review.splice(reviewIdx, 1)
       storageService.store(KEY, gBooks);
@@ -489,7 +490,7 @@ function removeReview(reviewId,bookId) {
     })
 }
 
-function _getIdxById(reviewId,bookId) {
+function _getIdxById(reviewId, bookId) {
   var book = getBookById(bookId)
   var reviews = book.review
   return reviews.findIndex(review => review.id === reviewId)
@@ -532,20 +533,26 @@ function removeBook(bookId) {
   storageService.store(KEY, gBooks);
   return Promise.resolve();
 }
-
+function addGoogleBook(book){
+  console.log('add');
+  
+  var newbook = _createBook(book)
+  gBooks.push(newbook);
+  storageService.store(KEY, gBooks);
+}
 function _createBook(newBook) {
   return {
     id: utilService.makeId(),
-    title: newBook.title,
-    subtitle: newBook.subT,
-    authors: newBook.authors,
-    publishedDate: newBook.published,
-    description: newBook.desc,
-    pageCount: newBook.pages,
-    categories: newBook.cat,
-    thumbnail: newBook.imgUrl,
-    language: newBook.lang,
-    listPrice: newBook.PriceList
+    title: newBook.volumeInfo.title,
+    subtitle: newBook.volumeInfo.subtitle,
+    authors: newBook.volumeInfo.authors,
+    publishedDate: newBook.volumeInfo.publishedDate,
+    description: newBook.volumeInfo.description,
+    pageCount: newBook.volumeInfo.pageCount,
+    categories: newBook.volumeInfo.categories,
+    thumbnail: newBook.volumeInfo.imageLinks.thumbnail,
+    language: newBook.volumeInfo.language,
+    listPrice: newBook.saleInfo.listPrice
   };
 }
 function _getIdxById(BookId) {
@@ -554,5 +561,5 @@ function _getIdxById(BookId) {
 
 function getGoogleBooks(searchBy) {
   return axios.get(`https://www.googleapis.com/books/v1/volumes?printType=books&q=${searchBy}`)
-      .then(res => res.data.items)
+    .then(res => res.data.items)
 }

@@ -8,8 +8,7 @@ a {
     color: unset;
 }
 
-
-.review-list{
+.review-list {
     max-height: 200px;
     width: 100%;
     overflow: auto;
@@ -39,10 +38,62 @@ a {
     justify-content: center;
 }
 
-.container {
-    max-width: 1060px;
+.add-book-btn {
+    user-select: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(58, 58, 58, 0.629);
+    border-radius: 10px;
+    padding: .5%;
 }
 
+.add-book-btn:hover {
+    background-color: rgba(102, 102, 102, 0.629);
+}
+
+.main-search-book {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    margin-top: 2%;
+}
+
+.search-input {
+    margin-left: 1%;
+    font-size: .9em;
+    width: 20%;
+    border: none;
+    border-radius: 10px;
+    padding: .3%;
+}
+.searches{
+    padding: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 640px;
+    background-color: rgba(35, 35, 35, 0.729);
+    border-radius: 20px;
+    text-align: left;
+}
+.single-search{
+    cursor: pointer;
+    display: flex;
+    padding: .7%;
+    justify-content: space-between;
+}
+.single-search:hover{
+    background-color: rgba(176, 190, 255, 0.341);
+    border-radius: 20px;
+}
+
+.container {
+    text-align: center;
+    max-width: 1060px;
+}
 
 .book-list {
     width: 100%;
@@ -112,6 +163,7 @@ a {
 .review-toggle:hover {
     background-color: rgba(110, 110, 110, 0.629);
 }
+
 .book-det {
     margin-top: 1%;
     margin-left: 1%;
@@ -122,10 +174,12 @@ a {
     cursor: unset;
     max-width: 60%;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
-.review{
+
+.review {
     width: 45%;
     margin-top: 10%;
     display: flex;
@@ -133,25 +187,30 @@ a {
     align-items: center;
     padding-top: 4%;
     border-top-left-radius: 20px;
-    background-color:  rgb(49, 49, 49);;
+    background-color: rgb(49, 49, 49);
+    ;
 }
-.review form{
+
+.review form {
     display: flex;
     flex-direction: column;
 }
-.save-btn{
+
+.save-btn {
     color: inherit;
     border: none;
     font-size: inherit;
     cursor: pointer;
     margin-top: 3%;
-    padding:1%;
+    padding: 1%;
     background-color: rgb(65, 65, 65);
     border-radius: 20px;
 }
-.save-btn:hover{
+
+.save-btn:hover {
     background-color: rgb(100, 100, 100);
 }
+
 .book-det div:last-child {
     margin-top: 1%;
     font-family: Arial, Helvetica, sans-serif;

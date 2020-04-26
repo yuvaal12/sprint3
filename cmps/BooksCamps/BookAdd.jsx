@@ -1,5 +1,6 @@
 import BookService from '../../services/BookService.js'
 import { eventBus } from '../../services/eventBusService.js'
+import SearchList from './SearchList.jsx'
 
 export default class BookAdd extends React.Component {
     state = {
@@ -29,6 +30,7 @@ export default class BookAdd extends React.Component {
                     </form>
                 </section>
                 {books && <SearchList books={books} onAddBook={this.onAddBook} />}
+                <hr />
             </React.Fragment>
         )
     }

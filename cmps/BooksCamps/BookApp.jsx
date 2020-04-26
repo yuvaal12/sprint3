@@ -30,10 +30,6 @@ export default class BookApp extends React.Component {
         this.setState({ filterBy}, () => this.loadBooks())
     }
 
-    onDelete = (bookId) => {
-        BookService.removeBook(bookId)
-        this.loadCars()
-    }
 
     render() {
         const  {books } = this.state
@@ -41,7 +37,6 @@ export default class BookApp extends React.Component {
             <div className="container">
                 <BookFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
                 {books &&<BookList books={ books } />}
-                <BookDetails onDelete={()=> this.onDelete }></BookDetails>
             </div>
         )
     }

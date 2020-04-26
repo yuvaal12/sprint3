@@ -64,6 +64,10 @@ export default class BookDetails extends React.Component {
         var sale = this.state.book.listPrice.isOnSale
         if (sale) return 'SALE!!'
     }
+    onDelete = () => {
+        BookService.removeBook(this.state.book.id)
+        this.props.history.push('/book')
+    }
 
 
     render() {
@@ -87,7 +91,7 @@ export default class BookDetails extends React.Component {
                     <span>language:  {book.language}</span>
                     <span>Categories:  {book.categories}</span>
                     <LongTxt text={book.description} />
-                    <button onClick={() => {this.props.onDelete(book.id)}}>Delete</button>
+                    <button onClick={this.onDelete}>Delete</button>
                 </div>
                 <div className={this.state.classReview}>
                     <BookReview bookId={book.id} />
