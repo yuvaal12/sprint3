@@ -90,7 +90,15 @@ function _createKeeps() {
                 url: './assets/audio/Yay.mp3'
             },
             isPinned: false,
-        }
+        },
+        {
+            type: 'coverOnly',
+            cover: {
+                type:'video',
+                url: './assets/video/sielnce.mp4'
+            },
+            isPinned: true,
+        },
     ]
     gKeeps =[];
     notes.forEach(note => {
@@ -108,7 +116,7 @@ function _createKeep(note) {
         var keppInfo = note.info;
     }
     if(note.cover === undefined) note.cover = null
-
+    if(note.isPinned === undefined) note.isPinned = false
     return {
         id: utilService.makeId(),
         type: note.type,
