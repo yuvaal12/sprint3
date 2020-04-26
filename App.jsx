@@ -14,7 +14,9 @@ export class App extends React.Component {
         return (
             <Router>
                 <div>
-                    <h2 className="title-page">Miss <span>BooK</span></h2>
+                    <h2 className="title-page">App<span>sus</span>
+                    </h2>
+                    {/* <img src="assets/img/logo.png" alt=""> */}
                     <NavBar history={history}></NavBar>
                     <main className="main container">
                         <Switch>

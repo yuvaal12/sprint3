@@ -1,6 +1,7 @@
 body {
     background-color: rgb(20, 20, 20);
     color: rgb(238, 238, 238);
+    margin: 0;
 }
 
 a {
@@ -8,24 +9,22 @@ a {
     color: unset;
 }
 
-
-.review-list{
+.review-list {
     max-height: 200px;
     width: 100%;
     overflow: auto;
 }
 
 .title-page {
+    margin: 0;
     padding: 1%;
     font-size: 2em;
-    text-align: center;
     background-color: rgba(100, 100, 100, 0.086);
-    border-radius: 20px;
     text-transform: uppercase;
-    letter-spacing: 7px;
-    opacity: 70%;
+    letter-spacing: 3px;
     pointer-events: none;
     user-select: none;
+    background-color: rgba(255, 255, 255, 0.171);
 }
 
 .title-page span {
@@ -42,7 +41,6 @@ a {
 .container {
     max-width: 1060px;
 }
-
 
 .book-list {
     width: 100%;
@@ -112,6 +110,7 @@ a {
 .review-toggle:hover {
     background-color: rgba(110, 110, 110, 0.629);
 }
+
 .book-det {
     margin-top: 1%;
     margin-left: 1%;
@@ -122,10 +121,12 @@ a {
     cursor: unset;
     max-width: 60%;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
-.review{
+
+.review {
     width: 45%;
     margin-top: 10%;
     display: flex;
@@ -133,25 +134,30 @@ a {
     align-items: center;
     padding-top: 4%;
     border-top-left-radius: 20px;
-    background-color:  rgb(49, 49, 49);;
+    background-color: rgb(49, 49, 49);
+    ;
 }
-.review form{
+
+.review form {
     display: flex;
     flex-direction: column;
 }
-.save-btn{
+
+.save-btn {
     color: inherit;
     border: none;
     font-size: inherit;
     cursor: pointer;
     margin-top: 3%;
-    padding:1%;
+    padding: 1%;
     background-color: rgb(65, 65, 65);
     border-radius: 20px;
 }
-.save-btn:hover{
+
+.save-btn:hover {
     background-color: rgb(100, 100, 100);
 }
+
 .book-det div:last-child {
     margin-top: 1%;
     font-family: Arial, Helvetica, sans-serif;
