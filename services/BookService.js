@@ -1,7 +1,7 @@
 import utilService from './utilService.js'
 import storageService from './storageService.js'
 
-const KEY = 'books';
+const KEY_BOOK = 'books';
 const gDefualtBook = [{
         "id": "OXeMG8wNskc",
         "title": "metus hendrerit",
@@ -443,7 +443,7 @@ const gDefualtBook = [{
         }
     }
   ];
-var gBooks = storageService.load(KEY);
+var gBooks = storageService.load(KEY_BOOK);
 
 export default {
     query,

@@ -7,7 +7,7 @@ export function NavBar(props) {
             <li><NavLink exact to='/'>Home</NavLink></li>
             <li><NavLink to='/about'>About</NavLink></li>
             <li><NavLink to='/book'>Books</NavLink></li>
-            <li><NavLink to='/book'>Nots</NavLink></li>
+            <li><NavLink to='/notes'>Notes</NavLink></li>
             <li><NavLink to='/book'>Email</NavLink></li>
             {/* <button onClick={() => {
             props.history.goBack();

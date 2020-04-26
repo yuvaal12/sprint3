@@ -3,8 +3,9 @@ const { Route, Switch, NavLink  } = ReactRouterDOM
 const history = History.createBrowserHistory()
 
 import {NavBar} from './cmps/NavBar.jsx';
-import BookApp from './pages/books/BookApp.jsx'
-import BookDetails from './pages/books/BookDetails.jsx'
+import BookApp from './pages/books/BookApp.jsx';
+import KeepApp from './pages/keeps/KeepApp.jsx';
+import BookDetails from './pages/books/BookDetails.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import Home from './pages/Home.jsx';
 import UserMsg from './cmps/UserMsg.jsx';
@@ -37,6 +38,7 @@ export class App extends React.Component {
                             <Route component={AboutUs} path="/about" />
                             <Route component={BookApp} exact path="/book" />
                             <Route component={BookDetails} path="/book/:theBookId" />
+                            <Route component={KeepApp} path="/notes" />
                             <Route component={Home} path="/" />
                         </Switch>
                     </main>
