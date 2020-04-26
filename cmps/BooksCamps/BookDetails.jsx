@@ -39,13 +39,10 @@ export default class BookDetails extends React.Component {
         var sale = this.props.book.listPrice.isOnSale
         if(sale) return 'SALE!!'
     }
-    isLong(){
 
-    }
 
     render() {
         const { book, onBack, onDelete } = this.props
-        console.log('del:',onDelete);
         
         return (
             <section>
@@ -61,7 +58,7 @@ export default class BookDetails extends React.Component {
                     <span>Pages:  {book.pageCount} <span> - {this.getLength()}</span></span>
                     <span>language:  {book.language}</span>
                     <span>Categories:  {book.categories}</span>
-                    <LongTxt text={book. description}/> 
+                    <LongTxt text={book.description}/> 
                     <button onClick={() => this.props.onDelete(book.id)}>Delete</button>
                 </div>
             </section>

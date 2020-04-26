@@ -442,10 +442,8 @@ const gDefualtBook = [{
             "isOnSale": true
         }
     }
-];
-var gBooks = gDefualtBook;
-
-
+  ];
+var gBooks = storageService.load(KEY);
 
 export default {
     query,
@@ -470,12 +468,11 @@ function addReview(review, bookId) {
 }
 
 function reviewQuery(bookId) {
-    return getBookById(bookId)
-        .then((book) => {
-            var reviews = (book.review) ? book.review : []
-            console.log(reviews);
-            return reviews;
-        })
+  return getBookById(bookId)
+    .then((book) => {
+      var reviews = (book.review) ? book.review : []
+      return reviews;
+    })
 }
 
 function removeReview(reviewId, bookId) {
@@ -495,17 +492,19 @@ function _getIdxById(reviewId, bookId) {
 }
 
 function query(filterBy = null) {
-    var books = gBooks;
-    if (!filterBy) return Promise.resolve(gBooks)
-    else {
-        var { title, maxPrice, minPrice } = filterBy
-        maxPrice = maxPrice ? maxPrice : Infinity
-        minPrice = minPrice ? minPrice : 0
-        books = gBooks.filter(book => book.title.includes(title.toLowerCase()) &&
-            (book.listPrice.amount < maxPrice) &&
-            book.listPrice.amount > minPrice)
-    }
-    return Promise.resolve(books);
+
+  if (!gBooks) gBooks = gDefualtBook;
+  var books = gBooks;
+  if (!filterBy) return Promise.resolve(gBooks)
+  else {
+    var { title, maxPrice, minPrice } = filterBy
+    maxPrice = maxPrice ? maxPrice : Infinity
+    minPrice = minPrice ? minPrice : 0
+    books = gBooks.filter(book => book.title.includes(title.toLowerCase())
+      && (book.listPrice.amount < maxPrice)
+      && book.listPrice.amount > minPrice)
+  }
+  return Promise.resolve(books);
 }
 
 function saveBook(savedBook) {
@@ -534,28 +533,38 @@ function removeBook(bookId) {
 }
 
 function addGoogleBook(book) {
-    console.log('add');
-
-    var newbook = _createBook(book)
-    gBooks.push(newbook);
-    storageService.store(KEY, gBooks);
+  var newbook = _createBook(book)
+  gBooks.push(newbook);
+  storageService.store(KEY, gBooks);
+  return newbook;
 }
 
 function _createBook(newBook) {
-    return {
-        id: utilService.makeId(),
-        title: newBook.volumeInfo.title,
-        subtitle: newBook.volumeInfo.subtitle,
-        authors: newBook.volumeInfo.authors,
-        publishedDate: newBook.volumeInfo.publishedDate,
-        description: newBook.volumeInfo.description,
-        pageCount: newBook.volumeInfo.pageCount,
-        categories: newBook.volumeInfo.categories,
-        thumbnail: newBook.volumeInfo.imageLinks.thumbnail,
-        language: newBook.volumeInfo.language,
-        listPrice: newBook.saleInfo.listPrice
-    };
+  var pricing = newBook.saleInfo.listPrice;
+  if (!pricing) {
+    pricing = {
+      amount: 55,
+      currencyCode: 'ILS',
+      isOnSale: true
+    }
+    var desc = newBook.volumeInfo.description
+    if(!desc) desc= 'no info yet'
+  }
+  return {
+    id: utilService.makeId(),
+    title: newBook.volumeInfo.title,
+    subtitle: newBook.volumeInfo.subtitle,
+    authors: newBook.volumeInfo.authors,
+    publishedDate: newBook.volumeInfo.publishedDate,
+    description: newBook.volumeInfo.description,
+    pageCount: newBook.volumeInfo.pageCount,
+    categories: newBook.volumeInfo.categories,
+    thumbnail: newBook.volumeInfo.imageLinks.thumbnail,
+    language: newBook.volumeInfo.language,
+    listPrice: pricing
+  };
 }
+
 
 function _getIdxById(BookId) {
     return gBooks.findIndex(book => book.id === BookId)
