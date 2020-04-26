@@ -3,14 +3,14 @@ import AddByType from './AddByType.jsx'
 
 export default class KeepAdd extends React.Component {
     state = {
-        value: null
+        pickedType: null
     }
 
     pickType = ({ target }) => {
         const val = target.value;
         this.setState({
-            value: val
-        })  
+            pickedType: val
+        })     
     }
 
     render() {
@@ -20,9 +20,9 @@ export default class KeepAdd extends React.Component {
                     <form className="add-keep-form">
                         <label>Pick Type:</label>
                         <select className="type-keep" onChange={this.pickType}>
-                            {keepService.getTypes().map((type,idx) => <option key={idx} value={type}>{type}</option>)}
+                            {keepService.getTypes().map((type, idx) => <option key={idx} value={type}>{type}</option>)}
                         </select>
-                        {this.state.typePicked && <AddByType typeChoose={this.state.typePicked} />}
+                        {this.state.pickedType && <AddByType typeChoose={this.state.pickedType} />}
                     </form>
                 </section>
                 <hr />
