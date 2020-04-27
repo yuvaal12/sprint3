@@ -30,7 +30,7 @@ export default class KeepCover extends React.Component {
                     <div>
                         <input type="radio" name="linkT" id="url" value="url" onClick={this.getInput}/>
                         <label htmlFor="url">Url</label>
-                        <input type="radio" name="linkT" id="file" value="file" onClick={this.getInput}/>
+                        <input disabled type="radio" name="linkT" id="file" value="file" onClick={this.getInput}/>
                         <label htmlFor="file">File</label>
                     </div>
                     {this.state.input}

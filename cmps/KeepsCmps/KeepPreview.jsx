@@ -70,8 +70,12 @@ export default class KeepPreview extends React.Component {
     onDel() {
         keepService.removeKeep(this.state.keep.id)
     }
+    onChangeColor({target}){
+        console.log(target.name);
+        keepService.saveKeep(target.name,'bgColor',target.value)
+    }
     render() {
-        const { keep } = this.props.keep   
+ 
         return (
             <div className="keep-card" style={{backgroundColor: this.props.keep.bgColor}}>
                 <span>{this.isPinned()}</span>
@@ -82,7 +86,7 @@ export default class KeepPreview extends React.Component {
                 <section className="keep-tools">
                     <span onClick={() => this.onDel()}>Delete</span>
                     <span>Edit</span>
-                    <input type="color" id="colorcade" name="color" className="hidden"/>
+                    <input type="color" id="colorcade" name={this.props.keep.id}  className="hidden" onChange={this.onChangeColor}/>
                     <label htmlFor="colorcade" className="color-btn">Color</label>
                 </section>
             </div>

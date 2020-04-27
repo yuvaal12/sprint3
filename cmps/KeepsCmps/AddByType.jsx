@@ -17,10 +17,10 @@ export default class AddByType extends React.Component {
         this.setState(prevState => ({ note: { ...prevState.note, [field]: value } }))
     }
     saveKeep = () => {
-
         var note = this.state.note
         keepService.addKeep(note)
-        this.props.load()
+        this.props.onLoad()
+        
     }
 
     getForm() {
@@ -33,11 +33,10 @@ export default class AddByType extends React.Component {
             return (<KeepTodos handle={this.handleChange} />)
         } else return ''
     }
-    ען
     render() {
         return (
             <React.Fragment>
-                <form onSumbit={this.saveKeep}>
+                <form>
                     {this.getForm()}
                 </form>
                 <button onClick={this.saveKeep}>Add note</button>

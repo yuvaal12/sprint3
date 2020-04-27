@@ -16,13 +16,14 @@ export default class KeepApp extends React.Component {
     }
 
     loadKeeps() {
-        keepService.query(this.state.filterBy)
+        console.log('got to load');
+        keepService.query()
             .then(keeps => {
                 this.setState({ keeps })
             })
     }
 
-    onSaveBook = (keep) => {
+    onSaveKeep = (keep) => {
         keepService.addKeep(keep)
         this.loadKeeps()
     }

@@ -20,7 +20,7 @@ export default class KeepAdd extends React.Component {
                         <select className="type-keep" onChange={this.pickType}>
                             {keepService.getTypes().map((type, idx) => <option key={idx} value={type}>{type}</option>)}
                         </select>
-                        {this.state.pickedType && <AddByType typeChoose={this.state.pickedType} load={this.props.load}/>}
+                        {this.state.pickedType && <AddByType typeChoose={this.state.pickedType} onLoad={this.props.load}/>}
                     </div>
                 </section>
                 <hr />
