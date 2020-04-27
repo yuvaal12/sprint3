@@ -1,5 +1,6 @@
 import emailService from '../../services/emailService.js'
 import EmailList from '../../cmps/EmailCamps/EmailList.jsx'
+import EmailStatus from '../../cmps/EmailCamps/EmailStatus.jsx'
 // import EmailFilter from '../../cmps/BooksCamps/BookFilter.jsx'
 
 export default class EmailApp extends React.Component {
@@ -14,9 +15,9 @@ export default class EmailApp extends React.Component {
 
     loadEmails() {
         emailService.query(this.state.filterBy)
-        .then(emails => {
-            this.setState({ emails })
-        })
+            .then(emails => {
+                this.setState({ emails })
+            })
     }
 
 
@@ -33,7 +34,7 @@ export default class EmailApp extends React.Component {
                 <main className="emails-page">
                     <div className="emails-container">
                         <div className="side-bar">
-                            <h2>Side Bar</h2>
+                            {emails && <EmailStatus emails={emails} />}
                             <div className="mail-options"><a href="">Inbox</a></div>
                             <div className="mail-options"><a href="">starred</a></div>
                             <div className="mail-options"><a href="">sent Mail</a></div>
