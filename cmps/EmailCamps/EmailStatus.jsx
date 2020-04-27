@@ -12,20 +12,14 @@ export default class EmailStatus extends React.Component {
 
     cntHowMuchReadEmails() {
 
-        this.props.emails.map(email => {
-            this.setState({ cntEmails: this.state.cntEmails++ })
-            // console.log(this.state.cntEmails);
-            if (!email.isRead) this.setState({ cntUnRead: this.state.cntUnRead++ })
-            console.log(this.state.cntUnRead, 'cntRead');
-            console.log(this.state.cntEmails, 'cntEmails');
+        this.props.emails.forEach(email => {
+            this.setState(prevState => ({ cntEmails: prevState.cntEmails+1}))
+            if (!email.isRead) this.setState(prevState => ({ cntUnRead: prevState.cntUnRead+1}))
 
         });
     }
 
     render() {
-        // console.log(this.state.cntEmails , 'cntEmails from Render');
-        console.log(this.state);
-
         return (
             <h2> MailBox: ({ this.state.cntUnRead} / { this.state.cntEmails})</h2 >
         )
