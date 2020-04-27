@@ -28,9 +28,9 @@ function _getIdxById(keepId) {
 }
 function saveKeep(keepId, filed, value) {
     getKeepById(keepId)
-    .then((keep) => {
-        keep[filed] = value
-        var idx = _getIdxById(keepId)
+        .then((keep) => {
+            keep[filed] = value
+            var idx = _getIdxById(keepId)
             gKeeps[idx] = keep
         })
     storageService.store(KEY_KEEP, gKeeps);
@@ -118,7 +118,6 @@ function _createKeeps() {
 function addKeep(note) {
     var modalNote = {
         type: note.type,
-        isCover: note.isCover,
         info: {
             title: note.title,
             body: note.body
@@ -130,27 +129,23 @@ function addKeep(note) {
     }
     var newKeep = _createKeep(modalNote)
     gKeeps.push(newKeep);
-    console.log(gKeeps);
     storageService.store(KEY_KEEP, gKeeps);
 }
 
 function _createKeep(note) {
     if (note.type === 'coverOnly') {
-        var isCoverKeep = true
         var keppInfo = ''
     }
     else {
-        var isCoverKeep = note.isCover;
         var keppInfo = note.info;
     }
-    note.isCover = (note.isCover === 'false') ? false : true
-    if (note.cover === undefined) note.cover = null
-    if (note.isPinned === undefined) note.isPinned = false
-    if (note.bgColor === undefined) note.bgColor = '#363636'
+    note.isCover = (note.isCover !== 'false')
+    if (!note.cover) note.cover = null
+    if (!note.isPinned) note.isPinned = false
+    if (!note.bgColor) note.bgColor = '#363636'
     return {
         id: utilService.makeId(),
         type: note.type,
-        isCover: isCoverKeep,
         cover: note.cover,
         isPinned: note.isPinned,
         info: keppInfo,

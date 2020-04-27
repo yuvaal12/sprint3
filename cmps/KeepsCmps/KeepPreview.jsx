@@ -1,14 +1,13 @@
 import keepService from '../../services/keepService.js'
 
 export default class KeepPreview extends React.Component {
-    state = {
-        keep: this.props.keep,
-        type: this.props.keep.type,
-        covered: this.props.keep.isCover,
-        info: this.props.keep.info,
+    componentDidMount() {
+        console.log(this.props);
+
     }
+
     getInfo() {
-        const { info, type } = this.state
+        const { info, type } = this.props.keep
         const body = info.body
         if (type !== 'coverOnly') {
             switch (type) {
@@ -28,32 +27,30 @@ export default class KeepPreview extends React.Component {
 
     }
     getTitle() {
-        const typ = this.state.type
+        const { type } = this.props.keep
         var title = ''
-        if (typ !== 'coverOnly') {
+        if (type !== 'coverOnly') {
             title = this.props.keep.info.title
         }
         return title;
     }
     getCover() {
-        console.log(this.state.keep);
-        
-        const coverd = this.state.covered
-        if (coverd === false || coverd === 'false') return ''
+        const isCovered = this.props.keep.cover
+        if (!isCovered) return ''
         else {
-            const coverType = this.state.keep.cover.typeC
+            const coverType = this.props.keep.cover.typeC
             switch (coverType) {
                 case 'img':
                     return (
-                        <img src={`${this.state.keep.cover.url}`} />
+                        <img src={`${this.props.keep.cover.url}`} />
                     )
                 case 'video':
                     return (
-                        <video controls src={`${this.state.keep.cover.url}`} />
+                        <video controls src={`${this.props.keep.cover.url}`} />
                     )
                 case 'audio':
                     return (
-                        <audio src={`${this.state.keep.cover.url}`} controls />
+                        <audio src={`${this.props.keep.cover.url}`} controls />
                     )
                 case 'map':
                     return (
@@ -63,21 +60,22 @@ export default class KeepPreview extends React.Component {
         }
     }
     isPinned() {
-        var bool = this.state.keep.isPinned
-        if (bool) return 'PINNED!'
+        var isPinned = this.props.keep.isPinned
+        if (isPinned) return 'PINNED!'
         else return ''
     }
     onDel() {
-        keepService.removeKeep(this.state.keep.id)
+        this.props.onDelete(this.props.keep.id)
     }
-    onChangeColor({target}){
-        console.log(target.name);
-        keepService.saveKeep(target.name,'bgColor',target.value)
+    onChangeColor = ({ target }) => {
+        const name = target.name
+        const value = target.value
+        keepService.saveKeep(name, 'bgColor', value)
     }
     render() {
- 
+
         return (
-            <div className="keep-card" style={{backgroundColor: this.props.keep.bgColor}}>
+            <div className="keep-card" style={{ backgroundColor: this.props.keep.bgColor }}>
                 <span>{this.isPinned()}</span>
                 {this.getCover()}
                 <h1>{this.getTitle()}</h1>
@@ -86,8 +84,8 @@ export default class KeepPreview extends React.Component {
                 <section className="keep-tools">
                     <span onClick={() => this.onDel()}>Delete</span>
                     <span>Edit</span>
-                    <input type="color" id="colorcade" name={this.props.keep.id}  className="hidden" onChange={this.onChangeColor}/>
-                    <label htmlFor="colorcade" className="color-btn">Color</label>
+                <input type="color" id={`colorcade${this.props.keep.id}`} name={this.props.keep.id} className="hidden" onChange={this.onChangeColor} />
+                    <label htmlFor={`colorcade${this.props.keep.id}`} className="color-btn">Color</label>
                 </section>
             </div>
         )
