@@ -1,6 +1,10 @@
 import keepService from '../../services/keepService.js'
 
 export default class KeepPreview extends React.Component {
+
+    state ={
+        pin: this.getPinIcon()
+    }
     componentDidMount() {
         console.log('oros:', this.props);
 
@@ -67,10 +71,21 @@ export default class KeepPreview extends React.Component {
     onDel() {
         this.props.onDelete(this.props.keep.id)
     }
+    getPinIcon(){
+        var isPinned = this.props.keep.isPinned
+        if (isPinned) return 'pin-yes.png'
+        else return 'pin-no.png'
+    }
     onChangeColor = ({ target }) => {
         const id = target.name
         const value = target.value
         keepService.saveKeep(id, 'bgColor', value)
+        this.props.onLoad()
+    }
+    onTextChangeColor = ({ target }) => {
+        const id = target.name
+        const value = target.value
+        keepService.saveKeep(id, 'textColor', value)
         this.props.onLoad()
     }
     render() {
@@ -80,9 +95,11 @@ export default class KeepPreview extends React.Component {
                 <span className="pin">{this.isPinned()}</span>
                 {this.getCover()}
                 <h1>{this.getTitle()}</h1>
-                {this.getInfo()}
+                <span style={{ color: this.props.keep.textColor }}>{this.getInfo()}</span>
                 <section className="keep-tools">
                     <span onClick={() => this.onDel()} className="tool-btn"><img className="icon-tool" src="../../assets/icons/trash.png" /></span>
+                    <span onClick={() => this.onSend()} className="tool-btn"><img className="icon-tool" src="../../assets/icons/email-icon.png" /></span>
+                    <span onClick={() => this.onPin()} className="tool-btn"><img className="icon-tool" src={`../../assets/icons/${this.state.pin}`} /></span>
                     <span className="tool-btn"><img className="icon-tool" src="../../assets/icons/edit-icon.png" /></span>
                     <input type="color" id={`colorcade${this.props.keep.id}`} name={this.props.keep.id} className="hidden" onChange={this.onChangeColor} />
                     <label htmlFor={`colorcade${this.props.keep.id}`} className="tool-btn"><img className="icon-tool" src="../../assets/icons/paint-bg.png" /></label>

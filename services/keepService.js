@@ -69,6 +69,7 @@ function _createKeeps() {
             },
             isPinned: false,
             bgColor: '#363636',
+            textColor: 'White',
             info: {
                 title: 'is it working?',
                 body: 'Fullstack?'
@@ -79,6 +80,7 @@ function _createKeeps() {
             isCover: false,
             isPinned: true,
             bgColor: '#363636',
+            textColor: 'White',
             info: {
                 title: 'and now?',
                 body:
@@ -92,6 +94,7 @@ function _createKeeps() {
         {
             type: 'coverOnly',
             bgColor: '#363636',
+            textColor: 'White',
             cover: {
                 typeC: 'audio',
                 url: './assets/audio/Yay.mp3'
@@ -101,6 +104,7 @@ function _createKeeps() {
         {
             type: 'coverOnly',
             bgColor: '#363636',
+            textColor: 'White',
             cover: {
                 typeC: 'video',
                 url: './assets/video/sielnce.mp4'
@@ -142,6 +146,7 @@ function _createKeep(note) {
     if (!note.cover) note.cover = null
     if (!note.isPinned) note.isPinned = false
     if (!note.bgColor) note.bgColor = '#363636'
+    if (!note.textColor) note.textColor = 'White'
     return {
         id: utilService.makeId(),
         type: note.type,
@@ -149,5 +154,6 @@ function _createKeep(note) {
         isPinned: note.isPinned,
         info: keppInfo,
         bgColor: note.bgColor,
+        textColor: note.textColor
     }
 }
