@@ -116,3 +116,18 @@ h6 {
 .bold {
     font-weight: bold;
 }
+
+.compose {
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 25px;
+    background-color: tomato;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.compose:hover {
+    background-color: white;
+    color: tomato;
+}

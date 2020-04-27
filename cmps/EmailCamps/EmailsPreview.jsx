@@ -2,7 +2,7 @@ const { Link } = ReactRouterDOM
 
 export default function EmailsPreview(props) {
     const { email } = props
-    const isRead = (email.isRead)? 'bold' : ''
+    const isRead = (!email.isRead)? 'bold' : ''
     return (
         <Link className="emailLink" to={`/email/${email.id}`}>
             <article className={`email-preview ${isRead}`}>

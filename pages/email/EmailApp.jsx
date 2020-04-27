@@ -1,6 +1,7 @@
 import emailService from '../../services/emailService.js'
 import EmailList from '../../cmps/EmailCamps/EmailList.jsx'
-// import EmailFilter from '../../cmps/BooksCamps/BookFilter.jsx'
+import EmailStatus from '../../cmps/EmailCamps/EmailStatus.jsx'
+import EmailFilter from '../../cmps/EmailCamps/EmailFilter.jsx'
 
 export default class EmailApp extends React.Component {
     state = {
@@ -14,15 +15,16 @@ export default class EmailApp extends React.Component {
 
     loadEmails() {
         emailService.query(this.state.filterBy)
-        .then(emails => {
-            this.setState({ emails })
-        })
+            .then(emails => {
+                this.setState({ emails })
+            })
     }
 
 
     onSetFilter = (filterBy) => {
-        this.setState({ filterBy }, () => this.loadBooks())
+        this.setState({ filterBy }, () => this.loadEmails())
     }
+
 
 
     render() {
@@ -33,14 +35,15 @@ export default class EmailApp extends React.Component {
                 <main className="emails-page">
                     <div className="emails-container">
                         <div className="side-bar">
-                            <h2>Side Bar</h2>
+                            {emails && <EmailStatus emails={emails} />}
+                            <button className="compose">+Compose</button>
                             <div className="mail-options"><a href="">Inbox</a></div>
                             <div className="mail-options"><a href="">starred</a></div>
                             <div className="mail-options"><a href="">sent Mail</a></div>
                             <div className="mail-options"><a href="">Drafts</a></div>
                         </div>
                         <div className="email-main">
-                            {/* <EmailFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} /> */}
+                            <EmailFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
                             {emails && <EmailList emails={emails} />}
                         </div>
                     </div>
