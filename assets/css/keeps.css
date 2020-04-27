@@ -4,22 +4,25 @@
     justify-content: space-evenly;
 }
 .keep-card{
-    /* background-color: rgb(53, 53, 53); */
     border-radius: 10px;
-    margin-top: 1%;
+    margin-top: 1.5%;
     height: auto;
+    display: flex;
+    flex-direction: column;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 1% 1% 0 1%;
+    padding: 1% 1.5% 0 1%;
     min-width: 250px;
+    max-width: 550px;
 }
-.keep-card .color-btn{
+.keep-card .tool-btn{
     background-color: rgb(41, 41, 41);
     border-radius: 10px;
     padding: 2%;
     cursor: pointer;
+    width: 60px;
 }
-.keep-card .color-btn:hover{
+.keep-card .tool-btn:hover{
     background-color: rgb(78, 78, 78);
 
 }
@@ -27,13 +30,23 @@
     max-width: 250px;
     height: auto;
 }
+.keep-card .icon-tool{
+    width: 50%;
+}
 .keep-card h1{
     text-transform: uppercase;
     color: rgba(136, 96, 201, 0.582);
     letter-spacing: 3px;
 }
 .keep-tools{
+    margin-top: 3%;
+    border-top: 1px solid white;
+    padding-top: 5%;
     display: flex;
     justify-content: space-evenly;
-    padding-bottom: 1.5%;
+    padding-bottom: 5%;
+}
+.pin{
+    font-size: 1.8em;
+    margin-left: 100%;
 }

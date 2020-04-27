@@ -139,7 +139,6 @@ function _createKeep(note) {
     else {
         var keppInfo = note.info;
     }
-    note.isCover = (note.isCover !== 'false')
     if (!note.cover) note.cover = null
     if (!note.isPinned) note.isPinned = false
     if (!note.bgColor) note.bgColor = '#363636'

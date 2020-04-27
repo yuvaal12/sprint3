@@ -2,6 +2,7 @@ import KeepCover from './KeepCover.jsx'
 import KeepTodos from './KeepTodos.jsx';
 import KeepText from './KeepText.jsx';
 import keepService from '../../services/keepService.js'
+import { eventBus } from '../../services/eventBusService.js'
 
 export default class AddByType extends React.Component {
     state = {
@@ -11,16 +12,25 @@ export default class AddByType extends React.Component {
     }
 
     handleChange = ({ target }) => {
-        console.log(target.name, ':', target.value);
         const field = target.name
         const value = target.value
         this.setState(prevState => ({ note: { ...prevState.note, [field]: value } }))
     }
+    resetState() {
+        this.setState({
+            note: {
+                type: this.props.typeChoose
+            }
+        })
+    }
     saveKeep = () => {
         var note = this.state.note
         keepService.addKeep(note)
+        eventBus.emit('show-msg', { txt: 'note Added Successfully!' })
         this.props.onLoad()
-        
+        this.resetState()
+        this.props.closeAdd()
+
     }
 
     getForm() {

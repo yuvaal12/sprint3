@@ -7,7 +7,7 @@ export default class KeepCover extends React.Component {
         let val = target.value
         if (val === 'url') {
             this.setState({
-                input: <input type="text"  name="url" placeholder="http://example.com" onChange={this.props.handle} />
+                input: <input type="text"  name="url" placeholder="http://example.com/" onChange={this.props.handle} />
             })
         } else {
             this.setState({

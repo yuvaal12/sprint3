@@ -14,9 +14,8 @@ export default class KeepText extends React.Component {
         return (
             <React.Fragment>
                 <select name="isCover" onChange={this.toggleCover}>
-                    <option  name="cover" value=""></option>
-                    <option  name="cover" value="false">WithOut</option>
-                    <option  name="cover"  value="true">With</option>
+                    <option  name="cover" value="false">WithOut Cover</option>
+                    <option  name="cover"  value="true">With Cover</option>
                 </select>
                 {this.state.isCover && <KeepCover handle={this.props.handle}/>}
                 <div>

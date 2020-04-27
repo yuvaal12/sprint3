@@ -10,7 +10,9 @@ export default class KeepAdd extends React.Component {
         const val = target.value;
         this.setState({ pickedType: val })
     }
-
+    closeAdd = ()=>{
+        this.setState({pickedType: null})
+    }
     render() {
         return (
             <React.Fragment>
@@ -20,7 +22,7 @@ export default class KeepAdd extends React.Component {
                         <select className="type-keep" onChange={this.pickType}>
                             {keepService.getTypes().map((type, idx) => <option key={idx} value={type}>{type}</option>)}
                         </select>
-                        {this.state.pickedType && <AddByType typeChoose={this.state.pickedType} onLoad={this.props.onLoad}/>}
+                        {this.state.pickedType && <AddByType typeChoose={this.state.pickedType} closeAdd={this.closeAdd} onLoad={this.props.onLoad}/>}
                     </div>
                 </section>
                 <hr />
