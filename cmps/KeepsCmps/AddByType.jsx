@@ -21,7 +21,7 @@ export default class AddByType extends React.Component {
         })
     }
     saveKeep(ev){
-
+        
     }
     getForm() {
         const typ = this.props.typeChoose

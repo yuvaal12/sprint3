@@ -25,6 +25,10 @@ function getKeepById(keepId) {
 function _getIdxById(keepId) {
     return gKeeps.findIndex(keep => keep.id === keepId)
 }
+function saveKeep(keepId,keepEdited){
+    var keep = getKeepById(keepId)
+    
+}
 
 function removeKeep(keepId) {
     const keepIdx = _getIdxById(keepId);
@@ -64,15 +68,17 @@ function _createKeeps() {
                 url: './assets/img/logo.png'
             },
             isPinned: false,
+            bgColor: '#363636',
             info: {
                 title: 'is it working?',
                 body: 'Fullstack?' 
-            }
+            },
         },
         {
             type: 'todos',
             isCover: false,
             isPinned: true,
+            bgColor: '#363636',
             info: {
                 title: 'and now?',
                 body:
@@ -81,10 +87,11 @@ function _createKeeps() {
                         { txt: "Do this", doneAt: 137111811, id: utilService.makeId() },
                         { txt: "Do those", doneAt: 187535141, id: utilService.makeId() }
                     ]
-            }
+            },
         },
         {
             type: 'coverOnly',
+            bgColor: '#363636',
             cover: {
                 type:'audio',
                 url: './assets/audio/Yay.mp3'
@@ -93,6 +100,7 @@ function _createKeeps() {
         },
         {
             type: 'coverOnly',
+            bgColor: '#363636',
             cover: {
                 type:'video',
                 url: './assets/video/sielnce.mp4'
@@ -124,5 +132,6 @@ function _createKeep(note) {
         cover: note.cover,
         isPinned: note.isPinned,
         info: keppInfo,
+        bgColor: note.bgColor,
     }
 }

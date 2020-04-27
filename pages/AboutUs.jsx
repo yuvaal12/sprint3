@@ -2,8 +2,15 @@
 export default class AboutUs extends React.Component {
     render() {
         return (
-            <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium rem officia ipsa. Repellendus hic libero doloribus nihil molestiae, aut ullam autem neque, saepe omnis totam deserunt magnam veritatis nostrum molestias?
+            <div className="about flex">
+                <section>
+                <img src="./assets/img/galr.png"/>
+                <h1>Gal Rondel</h1>
+                </section>
+                <section>
+                <img src="./assets/img/yuvalbs.png"/>
+                <h1>Yuval Ben-Shaul</h1>
+                </section>
             </div>
         )
     }

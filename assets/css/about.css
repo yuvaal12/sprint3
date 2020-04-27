@@ -1,0 +1,35 @@
+.about {
+    margin-top: 10%;
+    justify-content: space-evenly;
+    animation: siding 10s infinite ease-in;
+}
+@keyframes siding{
+    0%{transform: translateX(-100%);}
+    25%{transform: translateX(0%) rotate(20deg);}
+    55%{transform: translateX(100%);}
+    75%{transform: translateX(0%)rotate(170deg);}
+    100%{transform: translateX(-100%);}
+
+}
+.about img {
+    width: 260px;
+    border-radius: 50%;
+    height: 340px;
+    box-shadow: 2px 4px 6px black;
+}
+
+.about h1 {
+    font-size: 3em;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 3px 5px 10px rgba(55, 26, 83, 0.685);
+    animation: spin .7s infinite;
+}
+
+@keyframes spin{
+    0%{rotate: 0deg ;}
+    25%{rotate: 25deg;color: rgba(51, 4, 83, 0.52);font-size: 1.5em;}
+    50%{rotate: 0deg;color: rgba(51, 4, 83, 0.308)}
+    75%{rotate: -25deg;color: rgba(51, 4, 83, 0.52);font-size: .7em;}
+    100%{rotate: 0deg;}
+}
