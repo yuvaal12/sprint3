@@ -16,7 +16,7 @@ export default class UserMsg extends React.Component {
                 this.setState({ msg: null, id: null, path: null })
             }, delay)
         })
-        this.unsubscribeFromEventBus = eventBus.on('del-msg', (txt) => {
+        this.unsubscribeShowMsg = eventBus.on('del-msg', (txt) => {
             const delay = 3000;
             this.setState({ txt})
             setTimeout(() => {
@@ -26,10 +26,10 @@ export default class UserMsg extends React.Component {
     }
     componentWillUnmount() {
         this.unsubscribeFromEventBus();
+        this.unsubscribeShowMsg();
     }
     render() {
         const { msg, id,txt } = this.state
-        console.log(txt,msg);
         return (!msg && !txt) ? '' : <section className="user-msg">
             <button onClick={() => {
                 this.setState({ msg: null, id: null, path: null })

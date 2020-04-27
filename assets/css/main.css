@@ -30,6 +30,7 @@ a {
 
 ul {
     list-style: none;
+    padding: unset;
 }
 
 input {

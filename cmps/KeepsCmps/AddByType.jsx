@@ -4,43 +4,42 @@ import KeepText from './KeepText.jsx';
 import keepService from '../../services/keepService.js'
 
 export default class AddByType extends React.Component {
-    state={
-        note: null
+    state = {
+        note: {
+            type: this.props.typeChoose
+        }
     }
 
-    handleInput = ({ target }) => {
+    handleChange = ({ target }) => {
+        console.log(target.name, ':', target.value);
         const field = target.name
         const value = target.value
-        this.setState(prevState => {
-            return {
-                note: {
-                    ...prevState.note,
-                    [field]: value
-                }
-            }
-        })
+        this.setState(prevState => ({ note: { ...prevState.note, [field]: value } }))
     }
-    saveKeep(ev){
+    saveKeep = () => {
+        var note = this.state.note
+        keepService.addKeep(note)
+        this.props.onLoad()
         
     }
+
     getForm() {
         const typ = this.props.typeChoose
-        console.log('type:', this.props.typeChoose);
         if (typ === 'text') {
-            return (<KeepText />)
+            return (<KeepText handle={this.handleChange} />)
         } else if (typ === 'coverOnly') {
-            return (<KeepCover />)
+            return (<KeepCover handle={this.handleChange} />)
         } else if (typ === 'todos') {
-            return (<KeepTodos />)
-        }
+            return (<KeepTodos handle={this.handleChange} />)
+        } else return ''
     }
     render() {
         return (
             <React.Fragment>
-                <form onSumbit={this.saveKeep}>
+                <form>
                     {this.getForm()}
                 </form>
-                <button>Add note</button>
+                <button onClick={this.saveKeep}>Add note</button>
             </React.Fragment>
         )
     }

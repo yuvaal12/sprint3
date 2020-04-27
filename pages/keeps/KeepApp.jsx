@@ -15,14 +15,14 @@ export default class KeepApp extends React.Component {
         this.loadKeeps()
     }
 
-    loadKeeps() {
-        keepService.query(this.state.filterBy)
+    loadKeeps =() => {
+        keepService.query()
             .then(keeps => {
                 this.setState({ keeps })
             })
     }
 
-    onSaveBook = (keep) => {
+    onSaveKeep = (keep) => {
         keepService.addKeep(keep)
         this.loadKeeps()
     }
@@ -32,7 +32,7 @@ export default class KeepApp extends React.Component {
     }
 
     onDelete = (keepId) => {
-        eventBus.emit('del-msg', { txt: ' Deleted Successfully!'})
+        // eventBus.emit('del-msg', { txt: ' Deleted Successfully!'})
         keepService.removeKeep(keepId)
         this.loadKeeps()
     }
@@ -41,8 +41,8 @@ export default class KeepApp extends React.Component {
         return (
             <section className="container">
                 {/* <KeepFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} /> */}
-                <KeepAdd />
-                {keeps && <KeepList keeps={keeps} />}
+                <KeepAdd onLoad={this.loadKeeps}/>
+                {keeps && <KeepList keeps={keeps} onDelete={this.onDelete}  onLoad={this.loadKeeps}/>}
             </section>
         )
     }
