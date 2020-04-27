@@ -36,10 +36,12 @@ export default class KeepPreview extends React.Component {
         return title;
     }
     getCover() {
+        console.log(this.state.keep);
+        
         const coverd = this.state.covered
-        if (coverd === false) return ''
+        if (coverd === false || coverd === 'false') return ''
         else {
-            const coverType = this.state.keep.cover.type
+            const coverType = this.state.keep.cover.typeC
             switch (coverType) {
                 case 'img':
                     return (
@@ -68,11 +70,6 @@ export default class KeepPreview extends React.Component {
     onDel() {
         keepService.removeKeep(this.state.keep.id)
     }
-    colorChange({target}){
-
-        // card.style.backgroundColor = target.value
-        
-    }
     render() {
         const { keep } = this.props.keep   
         return (
@@ -85,7 +82,7 @@ export default class KeepPreview extends React.Component {
                 <section className="keep-tools">
                     <span onClick={() => this.onDel()}>Delete</span>
                     <span>Edit</span>
-                    <input type="color" id="colorcade" name="color" className="hidden" onChange={this.colorChange}/>
+                    <input type="color" id="colorcade" name="color" className="hidden"/>
                     <label htmlFor="colorcade" className="color-btn">Color</label>
                 </section>
             </div>

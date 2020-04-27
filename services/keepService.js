@@ -1,7 +1,7 @@
 import utilService from './utilService.js'
 import storageService from './storageService.js'
 
-const keepsTypes = ['text', 'todos', 'coverOnly']
+const keepsTypes = ['','text', 'todos', 'coverOnly']
 const KEY_KEEP = 'notes';
 var gKeeps = storageService.load(KEY_KEEP);
 
@@ -51,12 +51,6 @@ function query(filterBy = null) {
     return Promise.resolve(keeps);
 }
 
-function addKeep(note) {
-    var newKeep = _createKeep(note)
-    gKeeps.push(newKeep);
-    storageService.store(KEY_KEEP, gKeeps);
-    return newKeep;
-}
 
 function _createKeeps() {
     const notes = [
@@ -64,7 +58,7 @@ function _createKeeps() {
             type: 'text',
             isCover: true,
             cover: {
-                type: 'img',
+                typeC: 'img',
                 url: './assets/img/logo.png'
             },
             isPinned: false,
@@ -93,7 +87,7 @@ function _createKeeps() {
             type: 'coverOnly',
             bgColor: '#363636',
             cover: {
-                type:'audio',
+                typeC:'audio',
                 url: './assets/audio/Yay.mp3'
             },
             isPinned: false,
@@ -102,7 +96,7 @@ function _createKeeps() {
             type: 'coverOnly',
             bgColor: '#363636',
             cover: {
-                type:'video',
+                typeC:'video',
                 url: './assets/video/sielnce.mp4'
             },
             isPinned: true,
@@ -114,6 +108,22 @@ function _createKeeps() {
     });
     storageService.store(KEY_KEEP, gKeeps);
 }
+
+function addKeep(note) {
+    var modalNote={
+        type: note.type,
+        isCover: note.isCover,
+        info:{
+            title: note.title,
+            body: note.body
+        }
+    }
+    var newKeep = _createKeep(modalNote)
+    gKeeps.push(newKeep);
+    console.log(gKeeps);
+    storageService.store(KEY_KEEP, gKeeps);
+}
+
 function _createKeep(note) {
     if(note.type === 'coverOnly') {
         var isCoverKeep = true
@@ -123,8 +133,10 @@ function _createKeep(note) {
         var isCoverKeep = note.isCover;
         var keppInfo = note.info;
     }
+    note.isCover = (note.isCover === 'false')? false : true
     if(note.cover === undefined) note.cover = null
     if(note.isPinned === undefined) note.isPinned = false
+    if(note.bgColor === undefined) note.bgColor = '#363636'
     return {
         id: utilService.makeId(),
         type: note.type,
