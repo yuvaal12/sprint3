@@ -8,41 +8,56 @@
     flex-direction: column;
     align-items: center;
     padding: 5%;
+    margin: auto;
 }
 
 .side-bar {
     display: flex;
-    flex-basis: 15%;
     flex-direction: column;
-    background-color: rgba(24, 24, 24, 0.212);
+    align-items: center;
+    align-items: center;
+    margin: auto;
+    color: tomato;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(228, 228, 228);
 }
 
-.side-bar a {
-    margin: 10px auto;
+.side-bar .mail-options {
+    border-bottom: 1px solid white;
+    width: 100%;
+    padding: 15px;
     font-family: nanumgothic;
 }
 
+.mail-options:hover {
+    width: 85%;
+    cursor: pointer;
+    background-color: rgb(194, 194, 194);
+}
+
 .email-main {
-    display: flex;
-    flex-basis: 85%;
+    background-color: tomato;
 }
 
 .emails-container {
-    display: flex;
-    justify-content: space-around;
-    background-color: #ccc;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
 }
 
 .email-preview {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
     color: rgb(0, 0, 0);
-    justify-content: space-between;
-    background-color: rgba(255, 255, 255, 0.24);
     border-bottom: 1px solid rgba(82, 82, 82, 0.116);
     background-color: white;
+}
+
+.emailLink article:hover {
+    background-color: rgb(194, 194, 194);
 }
 
 .email-preview h4,
@@ -75,26 +90,24 @@ h6 {
 .email-from {
     margin: auto;
     padding: 10px;
-    width: 100px;
     text-align: left;
 }
 
 .email-subject {
     margin: auto;
     padding: 10px;
-    width: 200px;
+    min-width: 100px;
     text-align: left;
 }
 
 .email-body {
-    width: 300px;
     margin: auto;
+    width: 150px;
     padding: 10px;
     text-align: left;
 }
 
 .email-sentAt {
-    width: 200px;
     margin: auto;
     padding: 10px;
     text-align: right;

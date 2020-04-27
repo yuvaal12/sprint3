@@ -14,12 +14,15 @@ import UserMsg from './cmps/UserMsg.jsx';
 export class App extends React.Component {
 
     state = {
-        classNavBar: "hidden"
+        classNavBar: "hidden",
+        menuSimble: '☰'
     }
     toggleMenu = () => {
         var isShow = this.state.classNavBar
-        if (isShow === 'hidden') this.setState({ classNavBar: "nav-container" })
-        else this.setState({ classNavBar: "hidden" })
+        if (isShow === 'hidden'){
+            this.setState({ classNavBar: "nav-container" ,menuSimble:'Ⅹ'})
+        } 
+        else this.setState({ classNavBar: "hidden" ,menuSimble:'☰'})
     }
 
     render() {
@@ -33,7 +36,7 @@ export class App extends React.Component {
                                     <img className="logo-img" src="assets/img/logo.png" alt=""></img>
                                 </h2>
                             </a>
-                            <a className="open-menu" onClick={this.toggleMenu}>❐</a>
+                            <a className="open-menu" onClick={this.toggleMenu}>{this.state.menuSimble}</a>
                         </div>
                     </nav>
                     <NavBar history={history} linksClass={this.state.classNavBar}></NavBar>

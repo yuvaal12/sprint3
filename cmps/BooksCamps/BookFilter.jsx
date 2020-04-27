@@ -23,15 +23,14 @@ export default class Filter extends React.Component {
         return (
             <React.Fragment>
                 <form className="filter-win" onSubmit={ this.onFilter }>
-                    <label htmlFor="">By title:</label>
-                    <input type="text" name='title' value={ title } onChange={ this.handleChange } />
-                    <label htmlFor="">min price:</label>
-                    <input type="number" name='minPrice' value={ minPrice } onChange={ this.handleChange } />
-                    <label htmlFor="">max price:</label>
-                    <input type="number" name='maxPrice' value={ maxPrice } onChange={ this.handleChange } />
+                    <label htmlFor=""></label>
+                    <input type="text" placeholder="By title:" name='title' value={ title } onChange={ this.handleChange } />
+                    <label htmlFor=""></label>
+                    <input type="number" placeholder="min price:" name='minPrice' value={ minPrice } onChange={ this.handleChange } />
+                    <label htmlFor=""></label>
+                    <input type="number" placeholder="max price:" name='maxPrice' value={ maxPrice } onChange={ this.handleChange } />
                     <button>Filter</button>
                 </form>
-                <hr/>
             </React.Fragment>
         )
     }

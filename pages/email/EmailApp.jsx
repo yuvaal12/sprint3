@@ -34,10 +34,10 @@ export default class EmailApp extends React.Component {
                     <div className="emails-container">
                         <div className="side-bar">
                             <h2>Side Bar</h2>
-                            <a href="">Inbox</a>
-                            <a href="">starred</a>
-                            <a href="">sent Mail</a>
-                            <a href="">Drafts</a>
+                            <div className="mail-options"><a href="">Inbox</a></div>
+                            <div className="mail-options"><a href="">starred</a></div>
+                            <div className="mail-options"><a href="">sent Mail</a></div>
+                            <div className="mail-options"><a href="">Drafts</a></div>
                         </div>
                         <div className="email-main">
                             {/* <EmailFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} /> */}
