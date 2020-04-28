@@ -1,4 +1,5 @@
 import keepService from '../../services/keepService.js'
+import utilService from '../../services/utilService.js'
 export default class KeepMoudlEdit extends React.Component {
 
     onEdit =() =>{
@@ -15,9 +16,15 @@ export default class KeepMoudlEdit extends React.Component {
         keep.info.title = target.value
         keepService.saveKeep(keep.id, 'info', keep.info)
     }
-    addTodo = () =>{
+    changeBody = ({target}) =>{
         var keep = this.props.pickedKeep
-        keep.info.body.push({txt:target.value})
+        keep.info.body = target.value
+        keepService.saveKeep(keep.id, 'info', keep.info)
+    }
+    addTodo = ({target}) =>{
+        var keep = this.props.pickedKeep
+        var value = target.value.split('.')
+        value.forEach(val => keep.info.body.push({txt: val,doneAt:null,id: utilService.makeId()}))
         keepService.saveKeep(keep.id, 'info', keep.info)
     }
     getCoverInfo() {
@@ -31,24 +38,33 @@ export default class KeepMoudlEdit extends React.Component {
             )
         } else return ''
     }
+    getInput = (type,text=null) =>{
+        if(type === 'todos') {
+            return(
+                <input name="todos" placeholder="add todos sepread by comma" onBlur={this.addTodo}/>
+            )
+        }else {
+            return(
+                <input name="body" placeholder={text} onChange={this.changeBody}/>
+            )
+        }
+    }
     getBodyInfo() {
         var info = this.props.pickedKeep.info
         if (info) {
             if (this.props.pickedKeep.type === 'todos') {
                 var text = '';
                 info.body.forEach(todo => {
-                    console.log(todo.txt);
                     text += '◆' + todo.txt + ' '
                 })
             } else if (this.props.pickedKeep.type === 'text') {
                 text = info.body
             }
-            console.log(text);
             return (
                 <div>
                     <h4>Title: <input name="title"  placeholder={info.title}  onChange={this.changeTitle}/></h4>
-                    <h4>Todos: <span className="todos-edit values">{text}</span></h4>
-                    <input name="todos" placeholder="add todos sepread by comma" onChange={this.addTodo}/>
+                    <h4>Body: <span className="todos-edit values">{text}</span></h4>
+                    {this.getInput(this.props.pickedKeep.type,text)}
                 </div>
             )
         } else return ''
@@ -57,6 +73,7 @@ export default class KeepMoudlEdit extends React.Component {
         var keep = this.props.pickedKeep
         return (
             <div className="moudle-edit">
+                <span className="tool-btn" onClick={this.props.onClose}>X</span>
                 <h2>ID: <span className="values">{keep.id}</span></h2>
                 <h4>Type: <span className="values">{keep.type}</span></h4>
                 <section className="edit-section">

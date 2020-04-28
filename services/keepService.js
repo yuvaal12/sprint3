@@ -31,7 +31,7 @@ function saveKeep(keepId, filed, value) {
         .then((keep) => {
             keep[filed] = value
             var idx = _getIdxById(keepId)
-            gKeeps[idx] = keep
+            gKeeps[idx] = keep  
         })
     storageService.store(KEY_KEEP, gKeeps);
 }
