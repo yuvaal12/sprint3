@@ -27,6 +27,7 @@ function _getIdxById(keepId) {
     return gKeeps.findIndex(keep => keep.id === keepId)
 }
 function saveKeep(keepId, filed, value) {
+    console.log(keepId,filed,value);
     getKeepById(keepId)
         .then((keep) => {
             keep[filed] = value
