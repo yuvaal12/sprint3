@@ -48,16 +48,14 @@ function query(filterBy = null) {
     var keeps = gKeeps;
     if (!filterBy) return Promise.resolve(gKeeps)
     else {
-        var { title, isPinned, type } = filterBy
-        // isPinned = isPinned ? isPinned : false
-        // type = type ? type : ''
-        console.log(filterBy);
+        var { title } = filterBy
+
         keeps = gKeeps.filter(
             (keep) => {
                 if (keep.type != 'coverOnly') {
-                    (keep.info.title.includes(title.toLowerCase()))
-                } else
-                    keep
+                   return (keep.info.title.includes(title.toLowerCase()) ||
+                    keep.info.body.includes(title.toLowerCase()))
+                } else return false
             })
     }
     return Promise.resolve(keeps);
