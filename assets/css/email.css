@@ -37,6 +37,7 @@
 }
 
 .email-main {
+    padding: 20px;
     background-color: tomato;
 }
 
@@ -47,7 +48,7 @@
 
 .email-preview {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
@@ -56,8 +57,12 @@
     background-color: white;
 }
 
+.emailLink article {
+    width: 700px;
+}
+
 .emailLink article:hover {
-    background-color: rgb(194, 194, 194);
+    background-color: rgb(219, 219, 219);
 }
 
 .email-preview h4,
@@ -76,6 +81,7 @@ h6 {
     height: 30px;
     border-radius: 25px;
     margin-top: 2%;
+    margin-bottom: 3%;
 }
 
 .email-search::placeholder {
@@ -93,6 +99,21 @@ h6 {
     text-align: left;
 }
 
+.email-star {
+    border: none;
+    text-align: center;
+    /* padding: 10px; */
+    /* text-align: left; */
+    font-size: 1.5em;
+    background-color: rgb(255, 47, 47);
+    border-bottom: 1px solid white;
+    border: 12px;
+}
+
+.yellow {
+    color: rgb(255, 226, 60);
+}
+
 .email-subject {
     margin: auto;
     padding: 10px;
@@ -102,12 +123,12 @@ h6 {
 
 .email-body {
     margin: auto;
-    width: 150px;
+    /* width: 200px; */
     padding: 10px;
     text-align: left;
 }
 
-.email-sentAt {
+.email-sent-at {
     margin: auto;
     padding: 10px;
     text-align: right;
@@ -130,4 +151,32 @@ h6 {
 .compose:hover {
     background-color: white;
     color: tomato;
+}
+
+.line-container {
+    display: flex;
+    width: 100%;
+}
+
+.btn-mail img {
+    width: 20px;
+    height: 20px;
+    border-radius: 25px;
+    padding: 10%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0);
+    margin-right: 20px;
+}
+
+.btn-mail {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    border-bottom: 1px solid rgb(233, 229, 229);
+}
+
+.btn-mail img:hover {
+    background-color: rgba(128, 128, 128, 0.349);
 }
