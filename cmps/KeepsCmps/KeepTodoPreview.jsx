@@ -8,7 +8,6 @@ export default class KeepTodoPreview extends React.Component {
 
     getTimeDone() {
         var ms = this.props.todo.doneAt
-        console.log(ms);
         if (ms) {
             var time = Date(ms)
             time.toString()

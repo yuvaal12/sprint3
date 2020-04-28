@@ -27,11 +27,9 @@ function _getIdxById(keepId) {
     return gKeeps.findIndex(keep => keep.id === keepId)
 }
 function saveKeep(keepId, filed, value) {
-    console.log(keepId,filed,value);
     getKeepById(keepId)
         .then((keep) => {
             keep[filed] = value
-            console.log(keep);
             var idx = _getIdxById(keepId)
             gKeeps[idx] = keep
         })
@@ -56,7 +54,6 @@ function query(filterBy = null) {
         console.log(filterBy);
         keeps = gKeeps.filter(
             (keep) => {
-                console.log(title,type,isPinned);
                 if (keep.type != 'coverOnly') {
                     (keep.info.title.includes(title.toLowerCase()))
                 } else
