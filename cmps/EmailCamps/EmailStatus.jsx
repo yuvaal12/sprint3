@@ -21,7 +21,7 @@ export default class EmailStatus extends React.Component {
 
     render() {
         return (
-            <h2> MailBox: ({ this.state.cntUnRead} / { this.state.cntEmails})</h2 >
+            <h2> MailBox: ({ this.state.cntUnRead}/{ this.state.cntEmails})</h2 >
         )
     }
 
