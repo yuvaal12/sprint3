@@ -18,8 +18,10 @@ export default class KeepTodos extends React.Component {
                     <option name="cover" value="true">With Cover</option>
                 </select>
                 {this.state.isCover && <KeepCover handle={this.props.handle} />}
+                <label htmlFor="title">Title:</label>
+                <input id="title" type="text" name="title" onChange={this.props.handle} placeholder="title here"/>
                 <div>
-                    <input  type="text" name="todo" placeholder="enter todos speared by: ," onChange={this.props.handle} />
+                    <input type="text" name="body" placeholder="enter comma separated list" onChange={this.props.handle} />
                 </div>
             </React.Fragment>
         )

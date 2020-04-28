@@ -16,7 +16,7 @@ export default class KeepApp extends React.Component {
     }
 
     loadKeeps =() => {
-        keepService.query()
+        keepService.query(this.state.filterBy)
             .then(keeps => {
                 this.setState({ keeps })
             })
@@ -40,7 +40,7 @@ export default class KeepApp extends React.Component {
         const { keeps } = this.state
         return (
             <section className="container">
-                {/* <KeepFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} /> */}
+                <KeepFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
                 <KeepAdd onLoad={this.loadKeeps}/>
                 {keeps && <KeepList keeps={keeps} onDelete={this.onDelete}  onLoad={this.loadKeeps}/>}
             </section>

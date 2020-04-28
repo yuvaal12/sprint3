@@ -35,6 +35,8 @@ export default class AddByType extends React.Component {
 
     getForm() {
         const typ = this.props.typeChoose
+        console.log('type:',typ);
+        
         if (typ === 'text') {
             return (<KeepText handle={this.handleChange} />)
         } else if (typ === 'coverOnly') {

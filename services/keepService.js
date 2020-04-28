@@ -30,6 +30,7 @@ function saveKeep(keepId, filed, value) {
     getKeepById(keepId)
         .then((keep) => {
             keep[filed] = value
+            console.log(keep);
             var idx = _getIdxById(keepId)
             gKeeps[idx] = keep
         })
@@ -49,10 +50,17 @@ function query(filterBy = null) {
     if (!filterBy) return Promise.resolve(gKeeps)
     else {
         var { title, isPinned, type } = filterBy
-        isPinned = isPinned ? isPinned : false
-        type = type ? type : 'regular'
+        // isPinned = isPinned ? isPinned : false
+        // type = type ? type : ''
+        console.log(filterBy);
         keeps = gKeeps.filter(
-            keep => keep.title.includes(title.toLowerCase()) && type && isPinned)
+            (keep) => {
+                console.log(title,type,isPinned);
+                if (keep.type != 'coverOnly') {
+                    (keep.info.title.includes(title.toLowerCase()))
+                } else
+                    keep
+            })
     }
     return Promise.resolve(keeps);
 }
@@ -131,18 +139,33 @@ function addKeep(note) {
             url: note.url
         }
     }
-    var newKeep = _createKeep(modalNote)
+    var newKeep = _createKeep(modalNote, true)
     gKeeps.push(newKeep);
     storageService.store(KEY_KEEP, gKeeps);
 }
 
-function _createKeep(note) {
+function _createKeep(note, isByUser = false) {
     if (note.type === 'coverOnly') {
-        var keppInfo = ''
+        note.info = ''
+    } else if (note.type === 'todos' && isByUser) {
+        var str = note.info.body
+        var array = str.split('.')
+        var body = []
+        body.push()
+        array.forEach((todo) => {
+            var obj = {
+                txt: todo,
+                id: utilService.makeId(),
+                doneAt: null
+            }
+            body.push(obj)
+        })
+        note.info = {
+            title: note.info.title,
+            body
+        }
     }
-    else {
-        var keppInfo = note.info;
-    }
+
     if (!note.cover) note.cover = null
     if (!note.isPinned) note.isPinned = false
     if (!note.bgColor) note.bgColor = '#363636'
@@ -152,7 +175,7 @@ function _createKeep(note) {
         type: note.type,
         cover: note.cover,
         isPinned: note.isPinned,
-        info: keppInfo,
+        info: note.info,
         bgColor: note.bgColor,
         textColor: note.textColor
     }
