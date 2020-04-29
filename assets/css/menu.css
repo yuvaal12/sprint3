@@ -14,14 +14,14 @@
     animation-fill-mode: forwards; 
 }
 @keyframes spin1{
-    100% {rotate: 40deg;transform: translateY(8px);transform: translateX(20px)}
+    100% {transform:rotate(40deg) translateY(10px) translateX(10px)}
 }
 .down-line{
     animation: spin2 .4s ;
     animation-fill-mode: forwards; 
 }
 @keyframes spin2{
-    100% {rotate: -40deg;transform: translateY(-5px);transform: translateX(6px)}
+    100% {transform:rotate(-40deg)translateY(-10px)translateX(-3px)}
 }
 .btn-back{
     border: none;
