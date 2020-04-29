@@ -31,16 +31,6 @@ export default class EmailsPreview extends React.Component {
 
     }
 
-    onDelete = () => {
-        const { email } = this.props
-        emailService.saveMail(email.id, 'isRemove', !email.isRemove)
-        emailService.removeEmail(email.id)
-        this.props.history.push('/email')
-
-        // this.setState(prevState => ({ isRemove: !prevState.isRemove }))
-
-    }
-
     render() {
         const { email } = this.props
         const isRead = (!this.state.mailRead) ? 'bold' : ''
@@ -61,7 +51,7 @@ export default class EmailsPreview extends React.Component {
                 </Link>
                 <div className="btn-mail">
                     <a onClick={this.isReadMail}><img src="/assets/icons/email-icon.png" alt="" /></a>
-                    <a onClick={this.onDelete}><img src="/assets/icons/trash.png" alt="" /></a>
+                    <a onClick={this.props.onDelet}><img src="/assets/icons/trash.png" alt="" /></a>
                 </div>
             </div>
         )

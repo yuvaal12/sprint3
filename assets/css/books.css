@@ -96,7 +96,7 @@
 }
 
 .book-preview:hover {
-    background-color: tomato;
+    background-color: rgb(255, 71, 71);
 }
 
 .book-preview img {
@@ -240,8 +240,8 @@
     justify-content: center;
     font-weight: bold;
     color: rgb(2, 2, 2);
-    background-color: tomato;
-    margin-bottom: 20px;
+    background-color: rgb(253, 77, 77);
+    margin: 20px auto;
 }
 
 .filter-win input {

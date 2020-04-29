@@ -17,10 +17,17 @@ export default class EmailApp extends React.Component {
     }
 
     loadEmails() {
+        
         emailService.query(this.state.filterBy)
             .then(emails => {
                 this.setState({ emails })
             })
+    }
+
+    onDel = (emailId) => {
+        emailService.removeEmail(emailId)
+        this.loadEmails()
+
     }
 
 
@@ -46,9 +53,11 @@ export default class EmailApp extends React.Component {
     }
     toggleStar() {
         this.onSetFilter('star')
+        this.setState({ isAdd: false })
     }
     toggleReMail() {
         this.onSetFilter('re')
+        this.setState({ isAdd: false })
     }
 
 
@@ -69,7 +78,7 @@ export default class EmailApp extends React.Component {
                         <div className="email-main">
                             {!isAdd && <EmailFilter filterBy={filterBy} onSetFilter={this.onSetFilter} />}
                             {isAdd && <EmailAdd />}
-                            {!isAdd && emails && isMailBox && <EmailList emails={emails}/>}
+                            {!isAdd && emails && isMailBox && <EmailList emails={emails} onDelet={this.onDel}/>}
                         </div>
                     </div>
                 </main>

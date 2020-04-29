@@ -41,9 +41,9 @@ function getEmailById(emailId) {
 
 function removeEmail(emailId) {
 
-    const emailIdx = gDefualtEmails.findIndex(email => email.id === emailId);
-    gDefualtEmails.splice(emailIdx, 1);
-    storageService.store(KEY_Email, gDefualtEmails);
+    const emailIdx = gEmails.findIndex(email => email.id === emailId);
+    gEmails.splice(emailIdx, 1);
+    storageService.store(KEY_Email, gEmails);
     return Promise.resolve();
 }
 
@@ -96,6 +96,7 @@ function query(filterBy = null) {
 
     if (!gEmails) gEmails = gDefualtEmails;
     var emails = gEmails;
+
     if (!filterBy) return Promise.resolve(gEmails)
     else {
         var { body } = filterBy
