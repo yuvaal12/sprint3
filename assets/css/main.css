@@ -38,15 +38,6 @@ a {
     background-color: white;
     justify-content: space-between;
 }
-.open-menu{
-    flex-direction: column;
-    user-select: none;
-}
-
-.line-menu{
-    line-height: 10px;
-    font-size: 1.5em;
-}
 
 .nav-bar-links a{
     text-align: center;

@@ -23,3 +23,16 @@
 @keyframes spin2{
     100% {rotate: -40deg;transform: translateY(-5px);transform: translateX(6px)}
 }
+.btn-back{
+    border: none;
+    cursor: pointer;
+}
+.open-menu{
+    flex-direction: column;
+    user-select: none;
+}
+
+.line-menu{
+    line-height: 10px;
+    font-size: 1.5em;
+}
