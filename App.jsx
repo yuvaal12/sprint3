@@ -32,7 +32,7 @@ export class App extends React.Component {
             <Router>
                 <div>
                     <MainBar onToggle={this.toggleMenu} />
-                    {this.state.isShown && <NavBar history={history}></NavBar>}
+                    {this.state.isShown && <NavBar history={history} onToggle={this.toggleMenu}></NavBar>}
                     <main className="main container">
                         <Switch>
                             <Route component={AboutUs} path="/about" />
