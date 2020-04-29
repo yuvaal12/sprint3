@@ -30,6 +30,10 @@ export default class EmailsPreview extends React.Component {
         this.setState(prevState => ({ isShowen: !prevState.isShowen }))
 
     }
+    doDel =() => {
+        const { email } = this.props
+        this.props.onDelet(email.id)
+    }
 
     render() {
         const { email } = this.props
@@ -51,7 +55,7 @@ export default class EmailsPreview extends React.Component {
                 </Link>
                 <div className="btn-mail">
                     <a onClick={this.isReadMail}><img src="/assets/icons/email-icon.png" alt="" /></a>
-                    <a onClick={this.props.onDelet}><img src="/assets/icons/trash.png" alt="" /></a>
+                    <a onClick={this.doDel}><img src="/assets/icons/trash.png" alt="" /></a>
                 </div>
             </div>
         )

@@ -42,6 +42,9 @@ function getEmailById(emailId) {
 function removeEmail(emailId) {
 
     const emailIdx = gEmails.findIndex(email => email.id === emailId);
+    console.log('emailId', emailId);
+    console.log('emailIdx', emailIdx);
+
     gEmails.splice(emailIdx, 1);
     storageService.store(KEY_Email, gEmails);
     return Promise.resolve();
