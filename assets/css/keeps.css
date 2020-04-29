@@ -7,6 +7,9 @@
 .main-add-keeps{
     font-family: Arial, Helvetica, sans-serif;
 }
+.main-keep{
+    background-color: tomato;
+}
 .radio-type {
     margin-top: 2%;
     display: flex;

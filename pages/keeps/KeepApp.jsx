@@ -39,7 +39,7 @@ export default class KeepApp extends React.Component {
     render() {
         const { keeps } = this.state
         return (
-            <section className="container">
+            <section className="main-keep container">
                 <KeepFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
                 <KeepAdd onLoad={this.loadKeeps}/>
                 {keeps && <KeepList keeps={keeps} onDelete={this.onDelete}  onLoad={this.loadKeeps}/>}
