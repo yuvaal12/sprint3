@@ -2,7 +2,18 @@
     all: unset;
     font-size: 3em;
     width: 100%;
-    color: rgb(0, 0, 0);
-    width: 1200px;
-    margin: auto;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.707);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.home-Page h2{
+    font-size: 2em;
+}
+.start-video{
+    position: absolute;
+    z-index: -1;
+    margin-left: -50%;
+    width: 100vw;
+    overflow-y: hidden;
+    opacity: .75;
 }
