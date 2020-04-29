@@ -30,7 +30,7 @@ export default class EmailAdd extends React.Component {
                 <h1>New Mail</h1>
                 <input name='from' className="email-search" placeholder="From" type="text" value={from} onChange={this.handleChange} />
                 <input name='subject' className="email-search" placeholder="Subject" type="text" value={subject} onChange={this.handleChange} />
-                <textarea name='body' className="email-search" placeholder="Search Mail" type="text" value={body} onChange={this.handleChange} />
+                <textarea name='body' className="email-search" placeholder="Your Mail Here" type="text" value={body} onChange={this.handleChange} />
                 <button type="submit" className="send-btn" onClick={this.sendMail}>Send Mail </button>
             </form>
         )
