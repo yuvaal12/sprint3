@@ -4,6 +4,69 @@
     justify-content: space-evenly;
 }
 
+.main-add-keeps{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.radio-type {
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.radio-type label{
+    cursor: pointer;
+}
+
+.btn-type{
+    display: flex;
+    align-items: center;
+    padding: 1%;
+    box-shadow: 0px 0px 1.5px black;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+}
+
+.input-cover{
+    padding: 2%;
+    font-size: 1.3em;
+    max-width: 300px;
+    border: 1px solid rgba(255, 84, 68, 0.301);
+}
+
+.btn-save{
+    padding: 1%;
+    border: none;
+    font-weight: 600;
+    background-color: transparent;
+    box-shadow: 0px 0px 1.5px black;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.text-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+.input-txt{
+    text-align: center;
+    max-width: 600px;
+    width: 50%;
+    border: 1px solid rgba(255, 84, 68, 0.301);
+}
+
+.btn-save:hover{
+    background-color: rgba(255, 84, 68, 0.801);
+}
+
+.btn-type:hover{
+    background-color: rgba(255, 84, 68, 0.801);
+}
+
 .keep-card {
     border-radius: 10px;
     border: .5px solid rgba(0, 0, 0, 0.178);
@@ -61,6 +124,64 @@
 }
 
 .pin {
+    position: relative;
     font-size: 1.5em;
-    margin-left: 90%;
+    margin-left: 95%;
 }
+.note-date{
+    display: block;
+    font-size: .6em;
+    overflow: hidden;
+}
+.todo-label{
+    padding: .5%;
+    cursor: pointer;
+}
+.todo:hover{
+    cursor: pointer;
+    background-color: rgba(248, 238, 253, 0.486);
+}
+.todo-done{
+   text-decoration: line-through rgba(255, 0, 0, 0.541) 2.4px;
+}
+.moudle-edit{
+    z-index: 9;
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50%;
+    padding: 1%;
+    overflow: hidden;
+    margin-top: 3%;
+    margin-left: -10%;
+    background-color: rgb(26, 26, 26);
+    color: rgb(92, 92, 92);
+    border: 2px solid rgba(255, 255, 255, 0.741);
+}
+.moudle-edit h4{
+    margin: unset;
+}
+
+.moudle-edit .values{
+    color: rgba(251, 35, 35, 0.849);
+}
+.edit-section{
+    margin-top: 3%;
+    margin-bottom: 2%;
+}
+.edit-section input{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    width: 50%;
+}
+
+.todos-edit{
+    display: block;
+}
+.url-edit{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    width: 50%;
+}
+

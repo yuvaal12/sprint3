@@ -6,14 +6,14 @@ const KEY_Email = 'emails';
 var gEmails = storageService.load(KEY_Email);
 
 var gDefualtEmails = [
-    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: false, isStar: false, isShowen: false, isRemove: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: true, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: true, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: false, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: false, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'moshe', subject: 'how are you?', body: 'i just wanted to know?', isRead: true, isStar: false, isShowen: false, isRemove: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'moshe', subject: 'how are you?', body: 'i just wanted to know?', isRead: true, isStar: false, isShowen: false, isRemove: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'yuval', subject: 'tnx for your help', body: 'hi thank you very much', isRead: false, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() }
+    { id: utilService.makeId(), from: 'dani', isRe: false, subject: 'Wassap?', body: 'Cool  COOL', isRead: false, isStar: false, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'dani', isRe: false, subject: 'Wassap?', body: ' cool COOL', isRead: true, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'dani', isRe: false, subject: 'Wassap?', body: 'Cool COOL  COOL', isRead: true, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'dani', isRe: false, subject: 'Wassap?', body: 'Cool COOL ', isRead: false, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'dani', isRe: false, subject: 'Wassap?', body: 'Cool COOL  COOL', isRead: false, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'moshe', isRe: false, subject: 'how are you?', body: 'i  know?', isRead: true, isStar: false, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'moshe', isRe: false, subject: 'how are you?', body: 'just wanted?', isRead: true, isStar: false, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'yuval', isRe: false, subject: 'tnx for your help', body: 'hi thank you', isRead: false, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() }
 ]
 
 

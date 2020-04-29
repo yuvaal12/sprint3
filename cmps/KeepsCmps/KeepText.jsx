@@ -18,11 +18,11 @@ export default class KeepText extends React.Component {
                     <option  name="cover"  value="true">With Cover</option>
                 </select>
                 {this.state.isCover && <KeepCover handle={this.props.handle}/>}
-                <div>
+                <div className="text-div">
                     <label htmlFor="title">Title:</label>
-                    <input id="title" type="text" name="title" onChange={this.props.handle}/>
+                    <input className="input-txt" id="title" placeholder="enter title" type="text" name="title" onChange={this.props.handle}/>
                     <label htmlFor="body">text:</label>
-                    <input id="body" type="text" name="body" onChange={this.props.handle}/>
+                    <input className="input-txt" id="body"  placeholder="enter text" type="text" name="body" onChange={this.props.handle}/>
                 </div>
             </React.Fragment>
         )

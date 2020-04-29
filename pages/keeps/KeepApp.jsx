@@ -2,8 +2,8 @@ import { eventBus } from '../../services/eventBusService.js'
 import keepService from '../../services/keepService.js'
 import KeepList from '../../cmps/KeepsCmps/KeepList.jsx'
 import KeepAdd from '../../cmps/KeepsCmps/KeepAdd.jsx'
-import UserMsg from '../../cmps/UserMsg.jsx'
 import KeepFilter from '../../cmps/KeepsCmps/KeepFilter.jsx'
+
 
 export default class KeepApp extends React.Component {
     state = {
@@ -16,7 +16,7 @@ export default class KeepApp extends React.Component {
     }
 
     loadKeeps =() => {
-        keepService.query()
+        keepService.query(this.state.filterBy)
             .then(keeps => {
                 this.setState({ keeps })
             })
@@ -32,7 +32,7 @@ export default class KeepApp extends React.Component {
     }
 
     onDelete = (keepId) => {
-        // eventBus.emit('del-msg', { txt: ' Deleted Successfully!'})
+        eventBus.emit('del-msg', { txt: ' Deleted Successfully!',id:keepId})
         keepService.removeKeep(keepId)
         this.loadKeeps()
     }
@@ -40,7 +40,7 @@ export default class KeepApp extends React.Component {
         const { keeps } = this.state
         return (
             <section className="container">
-                {/* <KeepFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} /> */}
+                <KeepFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
                 <KeepAdd onLoad={this.loadKeeps}/>
                 {keeps && <KeepList keeps={keeps} onDelete={this.onDelete}  onLoad={this.loadKeeps}/>}
             </section>

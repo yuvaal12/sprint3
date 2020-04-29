@@ -4,7 +4,7 @@ const { NavLink } = ReactRouterDOM
 export function NavBar(props) {
     
     return <nav>
-        <ul className={props.linksClass}>
+        <ul className="nav-bar-links flex">
             <NavLink exact to='/'><li>Home</li></NavLink>
             <NavLink to='/about'><li>About</li></NavLink>
             <NavLink to='/book'><li>Books</li></NavLink>

@@ -49,7 +49,7 @@ export default class AddByType extends React.Component {
                 <form>
                     {this.getForm()}
                 </form>
-                <button onClick={this.saveKeep}>Add note</button>
+                <button className="btn-save" onClick={this.saveKeep}>Add note</button>
             </React.Fragment>
         )
     }

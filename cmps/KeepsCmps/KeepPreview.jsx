@@ -1,15 +1,24 @@
 import keepService from '../../services/keepService.js'
+import KeepTodoPreview from './KeepTodoPreview.jsx'
+import KeepMoudlEdit from '../../cmps/KeepsCmps/KeepMoudlEdit.jsx'
 
 export default class KeepPreview extends React.Component {
-
-    state ={
-        pin: this.getPinIcon()
+    state = {
+        pickedKeep: null,
+        openEdit: null
     }
-    componentDidMount() {
-        console.log('oros:', this.props);
-
+    onEdit = () => {
+        this.setState({
+            pickedKeep: true,
+            openEdit: true,
+        })
     }
-
+    onCloseEdit = () => {
+        this.setState({
+            pickedKeep: null,
+            openEdit: null,
+        })
+    }
     getInfo() {
         const { info, type } = this.props.keep
         const body = info.body
@@ -18,10 +27,7 @@ export default class KeepPreview extends React.Component {
                 case 'todos':
                     return (
                         body.map(todo =>
-                            <div key={todo.id}>
-                                <input type="checkbox" id={todo.txt} name={todo.txt} />
-                                <label htmlFor={todo.txt}>{todo.txt}</label>
-                            </div>
+                            <KeepTodoPreview key={todo.id} keep={this.props.keep} todo={todo} onLoad={this.props.onLoad} />
                         )
                     );
                 case 'text':
@@ -71,7 +77,7 @@ export default class KeepPreview extends React.Component {
     onDel() {
         this.props.onDelete(this.props.keep.id)
     }
-    getPinIcon(){
+    getPinIcon() {
         var isPinned = this.props.keep.isPinned
         if (isPinned) return 'pin-yes.png'
         else return 'pin-no.png'
@@ -88,6 +94,12 @@ export default class KeepPreview extends React.Component {
         keepService.saveKeep(id, 'textColor', value)
         this.props.onLoad()
     }
+    onPin = ({ target }) => {
+        const id = target.name
+        var value = this.props.keep.isPinned
+        keepService.saveKeep(id, 'isPinned', !value)
+        this.props.onLoad()
+    }
     render() {
 
         return (
@@ -99,13 +111,14 @@ export default class KeepPreview extends React.Component {
                 <section className="keep-tools">
                     <span onClick={() => this.onDel()} className="tool-btn"><img className="icon-tool" src="../../assets/icons/trash.png" /></span>
                     <span onClick={() => this.onSend()} className="tool-btn"><img className="icon-tool" src="../../assets/icons/email-icon.png" /></span>
-                    <span onClick={() => this.onPin()} className="tool-btn"><img className="icon-tool" src={`../../assets/icons/${this.state.pin}`} /></span>
-                    <span className="tool-btn"><img className="icon-tool" src="../../assets/icons/edit-icon.png" /></span>
+                    <span htmlFor={`pin${this.props.keep.id}`} className="tool-btn"><img className="icon-tool" src={`../../assets/icons/${this.getPinIcon()}`} onClick={this.onPin} id={`pin${this.props.keep.id}`} name={this.props.keep.id} /></span>
+                    <span className="tool-btn" onClick={this.onEdit}><img className="icon-tool" src="../../assets/icons/edit-icon.png" /></span>
                     <input type="color" id={`colorcade${this.props.keep.id}`} name={this.props.keep.id} className="hidden" onChange={this.onChangeColor} />
                     <label htmlFor={`colorcade${this.props.keep.id}`} className="tool-btn"><img className="icon-tool" src="../../assets/icons/paint-bg.png" /></label>
                     <input type="color" id={`textColorcade${this.props.keep.id}`} name={this.props.keep.id} className="hidden" onChange={this.onTextChangeColor} />
                     <label htmlFor={`textColorcade${this.props.keep.id}`} className="tool-btn"><img className="icon-tool" src="../../assets/icons/text-color.png" /></label>
                 </section>
+                {this.state.pickedKeep && this.state.openEdit && < KeepMoudlEdit pickedKeep={this.props.keep} onClose={this.onCloseEdit} onLoad={this.props.onLoad}/>}
             </div>
         )
     }
