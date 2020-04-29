@@ -3,6 +3,7 @@ const { Route, Switch, NavLink } = ReactRouterDOM
 const history = History.createBrowserHistory()
 
 import { NavBar } from './cmps/NavBar.jsx';
+import MainBar from './cmps/MainBar.jsx';
 import BookApp from './pages/books/BookApp.jsx';
 import KeepApp from './pages/keeps/KeepApp.jsx';
 import BookDetails from './pages/books/BookDetails.jsx';
@@ -15,32 +16,22 @@ import UserMsg from './cmps/UserMsg.jsx';
 export class App extends React.Component {
 
     state = {
-        classNavBar: "hidden",
-        menuSimble: '☰'
+        isShown: null
     }
     toggleMenu = () => {
-        var isShow = this.state.classNavBar
-        if (isShow === 'hidden'){
-            this.setState({ classNavBar: "nav-container" ,menuSimble:'Ⅹ'})
-        } 
-        else this.setState({ classNavBar: "hidden" ,menuSimble:'☰'})
+        if (!this.state.isShown) {
+            this.setState({ isShown: true })
+        } else {
+            this.setState({ isShown: null })
+        }
     }
 
     render() {
         return (
             <Router>
                 <div>
-                    <nav>
-                        <div className="navBar">
-                            <a href="/index.html#/">
-                                <h2 className="title-page">App<span>sus</span>
-                                    <img className="logo-img" src="assets/img/logo.png" alt=""></img>
-                                </h2>
-                            </a>
-                            <a className="open-menu" onClick={this.toggleMenu}>{this.state.menuSimble}</a>
-                        </div>
-                    </nav>
-                    <NavBar history={history} linksClass={this.state.classNavBar}></NavBar>
+                    <MainBar onToggle={this.toggleMenu} />
+                    {this.state.isShown && <NavBar history={history}></NavBar>}
                     <main className="main container">
                         <Switch>
                             <Route component={AboutUs} path="/about" />

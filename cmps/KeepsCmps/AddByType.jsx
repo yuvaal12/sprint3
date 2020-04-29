@@ -35,8 +35,6 @@ export default class AddByType extends React.Component {
 
     getForm() {
         const typ = this.props.typeChoose
-        console.log('type:',typ);
-        
         if (typ === 'text') {
             return (<KeepText handle={this.handleChange} />)
         } else if (typ === 'coverOnly') {
@@ -51,7 +49,7 @@ export default class AddByType extends React.Component {
                 <form>
                     {this.getForm()}
                 </form>
-                <button onClick={this.saveKeep}>Add note</button>
+                <button className="btn-save" onClick={this.saveKeep}>Add note</button>
             </React.Fragment>
         )
     }
