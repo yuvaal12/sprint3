@@ -47,6 +47,9 @@ export default class EmailApp extends React.Component {
     toggleStar() {
         this.onSetFilter('star')
     }
+    toggleReMail() {
+        this.onSetFilter('re')
+    }
 
 
     render() {
@@ -61,7 +64,7 @@ export default class EmailApp extends React.Component {
                             <button className="compose" onClick={() => { this.toggleAdd() }}>+Compose</button>
                             <div className="mail-options" onClick={() => { this.toggleMailBox() }}><a>Inbox</a></div>
                             <div className="mail-options" onClick={() => { this.toggleStar() }}><a>starred</a></div>
-                            <div className="mail-options"><a href="">Sent Mail</a></div>
+                            <div className="mail-options" onClick={() => { this.toggleReMail() }}><a>Sent Mail</a></div>
                         </div>
                         <div className="email-main">
                             {!isAdd && <EmailFilter filterBy={filterBy} onSetFilter={this.onSetFilter} />}

@@ -111,6 +111,9 @@ function query(filterBy = null) {
         if (filterBy === 'star') {
             emails = gEmails.filter(email => email.isStar === true)
         }
+        if (filterBy === 're') {
+            emails = gEmails.filter(email => email.isRe === true)
+        }
     }
 
     return Promise.resolve(emails);

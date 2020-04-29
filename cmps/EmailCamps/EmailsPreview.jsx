@@ -1,5 +1,6 @@
 const { Link } = ReactRouterDOM
 import emailService from '../../services/emailService.js'
+import EmailTxtFilter from './EmailTxtFilter.jsx'
 
 export default class EmailsPreview extends React.Component {
 
@@ -46,7 +47,6 @@ export default class EmailsPreview extends React.Component {
         const classStart = (this.state.star) ? 'yellow' : ''
         const classRemove = (this.state.isRemove) ? 'remove' : ''
         const isRe = (this.state.isRe) ? 'Re: ' : ''
-        console.log(this.state.isRe);
         
         return (
             <div className="line-container">
@@ -55,7 +55,7 @@ export default class EmailsPreview extends React.Component {
                     <article className={`email-preview ${isRead }`} onClick={this.toggleShowen}>
                         <div className="email-from"><span className="is-re">{isRe}</span>{email.from}</div>
                         <div className="email-subject">{email.subject}</div>
-                        <div className="email-body">{email.body}</div>
+                        <div className="email-body"> <EmailTxtFilter text={email.body} /></div>
                         <div className="email-sent-at">{email.sentAt}</div>
                     </article>
                 </Link>
