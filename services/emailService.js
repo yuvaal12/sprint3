@@ -6,11 +6,14 @@ const KEY_Email = 'emails';
 var gEmails = storageService.load(KEY_Email);
 
 var gDefualtEmails = [
-    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Pick up!', isRead: false, isStar: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Pick up!', isRead: false, isStar: true, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'moshe', subject: 'how are you?', body: 'i just wanted to know how are you ?', isRead: true, isStar: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'moshe', subject: 'how are you?', body: 'i just wanted to know how are you ?', isRead: true, isStar: false, sentAt: timeNow() },
-    { id: utilService.makeId(), from: 'yuval', subject: 'tnx for your help', body: 'hi thank you very much', isRead: false, isStar: true, sentAt: timeNow() }
+    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: false, isStar: false, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: true, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: true, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: false, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'dani', subject: 'Wassap?', body: 'Cool COOL cool COOL', isRead: false, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'moshe', subject: 'how are you?', body: 'i just wanted to know?', isRead: true, isStar: false, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'moshe', subject: 'how are you?', body: 'i just wanted to know?', isRead: true, isStar: false, isShowen: false, isRemove: false, sentAt: timeNow() },
+    { id: utilService.makeId(), from: 'yuval', subject: 'tnx for your help', body: 'hi thank you very much', isRead: false, isStar: true, isShowen: false, isRemove: false, sentAt: timeNow() }
 ]
 
 
@@ -18,7 +21,8 @@ export default {
     query,
     getEmailById,
     removeEmail,
-    saveMail
+    saveMail,
+    addEmail
 }
 
 function timeNow() {
@@ -36,13 +40,14 @@ function getEmailById(emailId) {
 }
 
 function removeEmail(emailId) {
-    const emailIdx = gDefualtEmails.findIndex(book => book.id === emailId);
+
+    const emailIdx = gDefualtEmails.findIndex(email => email.id === emailId);
     gDefualtEmails.splice(emailIdx, 1);
     storageService.store(KEY_Email, gDefualtEmails);
     return Promise.resolve();
 }
 
-function _getIdxById(BookId) {
+function _getIdxById(emailId) {
     return gEmails.findIndex(email => email.id === emailId)
 }
 
@@ -75,23 +80,15 @@ function _createEmail(newEmail) {
 
     return {
         id: utilService.makeId(),
-        from: 'dani',
-        subject: 'Wassap?',
-        body: 'Pick up!',
+        from: newEmail.from,
+        subject: newEmail.subject,
+        body: newEmail.body,
         isRead: false,
         isStar: false,
-        sentAt: 1551133930594,
-
-        title: newEmail.volumeInfo.title,
-        subtitle: newEmail.volumeInfo.subtitle,
-        authors: newEmail.volumeInfo.authors,
-        publishedDate: newEmail.volumeInfo.publishedDate,
-        description: newEmail.volumeInfo.description,
-        pageCount: newEmail.volumeInfo.pageCount,
-        categories: newEmail.volumeInfo.categories,
-        thumbnail: newEmail.volumeInfo.imageLinks.thumbnail,
-        language: newEmail.volumeInfo.language,
-        listPrice: pricing
+        isShowen: false,
+        isRemove: false,
+        isRe: true,
+        sentAt: timeNow(),
     };
 }
 
@@ -101,9 +98,20 @@ function query(filterBy = null) {
     var emails = gEmails;
     if (!filterBy) return Promise.resolve(gEmails)
     else {
-        var { body, read, unread } = filterBy
-        emails = gEmails.filter(email => email.body.toLowerCase().includes(body))
-
+        var { body } = filterBy
+        if (filterBy.body === body) {
+            emails = gEmails.filter(email => email.body.toLowerCase().includes(body))
+        }
+        if (filterBy.read === 'read') {
+            emails = gEmails.filter(email => email.isRead === true)
+        }
+        if (filterBy.unread === 'unread') {
+            emails = gEmails.filter(email => email.isRead === false)
+        }
+        if (filterBy === 'star') {
+            emails = gEmails.filter(email => email.isStar === true)
+        }
     }
+
     return Promise.resolve(emails);
 }

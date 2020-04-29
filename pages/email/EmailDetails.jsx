@@ -17,8 +17,7 @@ export default class EmailDetails extends React.Component {
 
     }
 
-    onDelete = () => {
-        emailService.removeEmail(this.state.email.id)
+    onClose = () => {
         this.props.history.push('/email')
     }
 
@@ -29,16 +28,15 @@ export default class EmailDetails extends React.Component {
         const Loading = <p>Loading...</p>
 
         return ((!email) ? Loading : <section>
-            <section className="book-detNrev">
-                <div className="">
-                    <h1 className="">from: {email.from}</h1>
-                    <h1 className="">subject: {email.subject}</h1>
-                    <h1 className="">body: {email.body}</h1>
-                    <span className="">sentAt: {email.sentAt}</span>
-                    <button onClick={this.onDelete}>Delete</button>
-                </div>
+            <section className="email-details">
+            <button className="read-btn" onClick={this.onClose}>X</button>
+                    <h1>From: {email.from}</h1>
+                    <h5>Subject: {email.subject}</h5>
+                    <h5>Body: {email.body}</h5>
+                    <span className="">SentAt: {email.sentAt}</span>
             </section>
         </section>
         )
     }
 }
+

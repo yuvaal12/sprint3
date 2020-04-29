@@ -2,11 +2,14 @@ import emailService from '../../services/emailService.js'
 import EmailList from '../../cmps/EmailCamps/EmailList.jsx'
 import EmailStatus from '../../cmps/EmailCamps/EmailStatus.jsx'
 import EmailFilter from '../../cmps/EmailCamps/EmailFilter.jsx'
+import EmailAdd from '../../cmps/EmailCamps/EmailAdd.jsx'
 
 export default class EmailApp extends React.Component {
     state = {
         emails: null,
         filterBy: null,
+        isAdd: false,
+        isMailBox: true
     }
 
     componentDidMount() {
@@ -25,10 +28,29 @@ export default class EmailApp extends React.Component {
         this.setState({ filterBy }, () => this.loadEmails())
     }
 
+    toggleAdd() {
+        var add = this.state.isAdd
+        if (!add) {
+            this.setState({ isAdd: true })
+            this.setState({ isMailBox: false })
+        } else {
+            this.setState({ isAdd: false })
+            this.setState({ isMailBox: true })
+        }
+    }
+    toggleMailBox() {
+        this.setState(prevState => ({ ...prevState.filterBy, filterBy: null }))
+        this.setState({ isMailBox: true })
+        this.setState({ isAdd: false })
+        this.onSetFilter(null)
+    }
+    toggleStar() {
+        this.onSetFilter('star')
+    }
 
 
     render() {
-        const { emails } = this.state
+        const { emails, isAdd, filterBy, isMailBox } = this.state
 
         return (
             <section>
@@ -36,15 +58,15 @@ export default class EmailApp extends React.Component {
                     <div className="emails-container">
                         <div className="side-bar">
                             {emails && <EmailStatus emails={emails} />}
-                            <button className="compose">+Compose</button>
-                            <div className="mail-options"><a href="">Inbox</a></div>
-                            <div className="mail-options"><a href="">starred</a></div>
-                            <div className="mail-options"><a href="">sent Mail</a></div>
-                            <div className="mail-options"><a href="">Drafts</a></div>
+                            <button className="compose" onClick={() => { this.toggleAdd() }}>+Compose</button>
+                            <div className="mail-options" onClick={() => { this.toggleMailBox() }}><a>Inbox</a></div>
+                            <div className="mail-options" onClick={() => { this.toggleStar() }}><a>starred</a></div>
+                            <div className="mail-options"><a href="">Sent Mail</a></div>
                         </div>
                         <div className="email-main">
-                            <EmailFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
-                            {emails && <EmailList emails={emails} />}
+                            {!isAdd && <EmailFilter filterBy={filterBy} onSetFilter={this.onSetFilter} />}
+                            {isAdd && <EmailAdd />}
+                            {!isAdd && emails && isMailBox && <EmailList emails={emails}/>}
                         </div>
                     </div>
                 </main>

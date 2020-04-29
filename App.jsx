@@ -20,10 +20,10 @@ export class App extends React.Component {
     }
     toggleMenu = () => {
         var isShow = this.state.classNavBar
-        if (isShow === 'hidden'){
-            this.setState({ classNavBar: "nav-container" ,menuSimble:'Ⅹ'})
-        } 
-        else this.setState({ classNavBar: "hidden" ,menuSimble:'☰'})
+        if (isShow === 'hidden') {
+            this.setState({ classNavBar: "nav-container", menuSimble: 'Ⅹ' })
+        }
+        else this.setState({ classNavBar: "hidden", menuSimble: '☰' })
     }
 
     render() {
@@ -33,11 +33,12 @@ export class App extends React.Component {
                     <nav>
                         <div className="navBar">
                             <a href="/index.html#/">
-                                <h2 className="title-page">App<span>sus</span>
-                                    <img className="logo-img" src="assets/img/logo.png" alt=""></img>
-                                </h2>
+                                <img className="logo-img" src="assets/img/logo.png" alt="" />
                             </a>
-                            <a className="open-menu" onClick={this.toggleMenu}>{this.state.menuSimble}</a>
+                            <a className="open-menu" onClick={this.toggleMenu}>
+                                {/* <img className="menu-open" src="assets/icons/menu.png" alt="" /> */}
+                                <img className="menu-close" src="assets/icons/close.png" alt="" />
+                            </a>
                         </div>
                     </nav>
                     <NavBar history={history} linksClass={this.state.classNavBar}></NavBar>

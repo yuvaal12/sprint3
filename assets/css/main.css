@@ -103,8 +103,7 @@ input {
 }
 
 .logo-img {
-    display: flex;
-    width: 35px;
+    width: 150px;
 }
 
 .nav-container {
@@ -148,4 +147,13 @@ input {
 .nav-container li:hover {
     background-color: rgb(255, 255, 255);
     color: black;
+}
+
+.menu-open {
+    width: 50px;
+}
+
+.menu-close {
+    margin: 10PX auto;
+    width: 40px;
 }
