@@ -5,7 +5,7 @@ export default class EmailTxtFilter extends React.Component {
     getText = () => {
         var text = this.props.text
         if (text.length <= 10) return text
-        return text.slice(0, 12) +'...'
+        return text.slice(0, 9) +'...'
     }
 
 
